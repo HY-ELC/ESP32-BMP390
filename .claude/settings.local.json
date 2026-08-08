@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pio run *)",
+      "Bash(where pio *)",
+      "Bash(where platformio *)",
+      "Read(//c/Users/hayang/.platformio/penv/Scripts/**)",
+      "Bash(\"C:\\\\Users\\\\hayang\\\\.platformio\\\\penv\\\\Scripts\\\\platformio.exe\" run *)",
+      "WebSearch",
+      "Bash(cp .backup2/FIR_Filter.cpp lib/FFT/)",
+      "Bash(cp .backup2/FFT_Process.cpp lib/FFT/)",
+      "Bash(cp .backup2/FFT_Process.h lib/FFT/)",
+      "Bash(cp .backup2/BMP390.cpp lib/BMP390/)",
+      "Bash(cp .backup2/main.cpp src/)"
+    ]
+  }
+}

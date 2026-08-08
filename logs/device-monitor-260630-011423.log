@@ -1,0 +1,102 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+
+
+╔══════════════════════════════════════════╗
+║   DMP390(BMP390) 次声波检测系统 v2.0   ║
+╠══════════════════════════════════════════╣
+║  MCU:    ESP32 Dev Module               ║
+║  传感器: BMP390 (DMP390兼容)            ║
+║  I2C:    SDA=GPIO18, SCL=GPIO19         ║
+║  OLED:   SDA=GPIO21, SCL=GPIO22         ║
+║  采样率: 200 Hz                          ║
+║  FFT:    1024点, Hamming窗              ║
+║  FIR:    65阶带通 (0.1~20Hz)            ║
+║  LED:    GPIO2 (板载蓝色LED)             ║
+╚══════════════════════════════════════════╝
+
+[BOOT] ESP32 Chip: ESP32-D0WD-V3
+[BOOT] CPU Freq:   240 MHz
+[BOOT] Flash Size: 4 MB
+[BOOT] Free Heap:  324 KB
+
+═══════════ DMP390 传感器初始化 ═══════════
+[DMP390] ═══════ 搜索 BMP390 传感器 ═══════
+[DMP390] 扫描 I2C (SDA=GPIO18, SCL=GPIO19)...
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+
+
+╔══════════════════════════════════════════╗
+║   DMP390(BMP390) 次声波检测系统 v2.0   ║
+╠══════════════════════════════════════════╣
+║  MCU:    ESP32 Dev Module               ║
+║  传感器: BMP390 (DMP390兼容)            ║
+║  I2C:    SDA=GPIO18, SCL=GPIO19         ║
+║  OLED:   SDA=GPIO21, SCL=GPIO22         ║
+║  采样率: 200 Hz                          ║
+║  FFT:    1024点, Hamming窗              ║
+║  FIR:    65阶带通 (0.1~20Hz)            ║
+║  LED:    GPIO2 (板载蓝色LED)             ║
+╚══════════════════════════════════════════╝
+
+[BOOT] ESP32 Chip: ESP32-D0WD-V3
+[BOOT] CPU Freq:   240 MHz
+[BOOT] Flash Size: 4 MB
+[BOOT] Free Heap:  324 KB
+
+═══════════ DMP390 传感器初始化 ═══════════
+[DMP390] ═══════ 搜索 BMP390 传感器 ═══════
+[DMP390] 扫描 I2C (SDA=GPIO18, SCL=GPIO19)...
+[DMP390]   ✗ 无设备应答
+[DMP390] GPIO18/19 总线上无设备 → 跳过
+[DMP390] 扫描 I2C (SDA=GPIO21, SCL=GPIO22)...
+[DMP390]   ✗ 无设备应答
+[DMP390] GPIO21/22 总线上无设备 → 跳过
+[DMP390] 扫描 I2C (SDA=GPIO22, SCL=GPIO21)...
+[DMP390]   ✗ 无设备应答
+[DMP390] GPIO22/21 总线上无设备 → 跳过
+
+[DMP390] ═══════ ✗ 传感器未找到 ═══════
+[DMP390] 请确认:
+[DMP390]   BMP390 VCC → ESP32 3.3V
+[DMP390]   BMP390 GND → ESP32 GND
+[DMP390]   BMP390 SDA → ESP32 GPIO18 或 GPIO21
+[DMP390]   BMP390 SCL → ESP32 GPIO19 或 GPIO22
+[DMP390]   BMP390 SDO → GND (地址=0x76)
+
+═══════════ ⚠ 传感器离线，进入诊断模式 ═══════════
+系统将继续运行，LED显示错误双闪模式
+每秒输出诊断信息，请检查:
+  1. DMP390模块是否正确连接
+  2. I2C地址是否为0x76或0x77
+  3. 供电是否为3.3V
+
+  I2C地址对照:
+    SDO脚接GND  → 地址 0x76
+    SDO脚接VCC  → 地址 0x77
+
+[INIT] FIR滤波器... OK
+[INIT] FFT处理模块... OK
+[INIT] OLED显示屏... [  5192][E][Wire.cpp:526] write(): NULL TX buffer pointer
+[  5200][E][Wire.cpp:526] write(): NULL TX buffer pointer
+[  5205][E][Wire.cpp:526] write(): NULL TX buffer pointer
+[  5210][E][Wire.cpp:526] write(): NULL TX buffer pointer
+[  5215][E][Wire.cpp:526] write(): NULL TX buffer pointer
+[  5220][E][Wire.cpp:448] endTransmission(): NULL TX buffer pointer

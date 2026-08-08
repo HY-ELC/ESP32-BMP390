@@ -1,0 +1,273 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+
+
+╔══════════════════════════════════════════╗
+║   DMP390(BMP390) 次声波检测系统 v3.0   ║
+╠══════════════════════════════════════════╣
+║  MCU:    ESP32 Dev Module               ║
+║  传感器: BMP390 (DMP390兼容)            ║
+║  BMP390: SDA=GPIO21, SCL=GPIO22         ║
+║  OLED:   SDA=GPIO18, SCL=GPIO19         ║
+║  采样率: 200 Hz                          ║
+║  FFT:    128点, Hamming窗, 0.64s刷新    ║
+║  滤波:   5点MA低通 + 窗内去均值(DC去除) ║
+║  LED:    GPIO2 (板载蓝色LED)             ║
+╚══════════════════════════════════════════╝
+
+[BOOT] ESP32 Chip: ESP32-D0WD-V3
+[BOOT] CPU Freq:   240 MHz
+[BOOT] Flash Size: 4 MB
+[BOOT] Free Heap:  337 KB
+
+═══════════ DMP390 传感器初始化 ═══════════
+[DMP390] ─── BMP390 初始化 (Wire, GPIO21/22) ───
+[DMP390] 尝试地址 0x77... 成功!
+[BMP390] bmp.pressure=83483.41
+[BMP390] 单位=Pa
+[DMP390] 基线校准... 66406.70 Pa
+[INIT] FIR滤波器... OK
+[INIT] FFT处理模块... OK
+[INIT] OLED显示屏... OK
+
+═══════════ 系统启动完成 ═══════════
+状态: 🟢 正常运行模式
+═══════════ DMP390 实时数据流 ═══════════
+  时间(ms)  |  气压(Pa)  |  温度(°C)  |  压差(Pa)  |  频率(Hz)  |  dB SPL
+----------------------------------------------------------------------------
+  [5435ms] P=66418.32Pa BL=66406.70Pa T=29.41°C | ΔP=11.617Pa FIR=11.564Pa | f=-1.00Hz dB=-999.0
+[DIAG] winMean=7.17Pa RMS=5.117Pa dB=108.2 dB
+[SPECTRUM] peakBin=3 freq=4.69Hz peakMag=15.5 | bins 3-12: 15.49 0.50 8.59 0.94 4.25 4.89 2.70 1.42 3.70 3.67
+  [6444ms] P=66422.95Pa BL=66406.70Pa T=29.44°C | ΔP=16.242Pa FIR=16.200Pa | f=4.69Hz dB=108.2
+  [7451ms] P=66427.70Pa BL=66406.70Pa T=29.47°C | ΔP=21.000Pa FIR=21.000Pa | f=6.25Hz dB=98.6
+  [8453ms] P=66431.13Pa BL=66406.70Pa T=29.49°C | ΔP=24.430Pa FIR=24.442Pa | f=6.25Hz dB=98.6
+  [9460ms] P=66431.81Pa BL=66406.70Pa T=29.49°C | ΔP=25.109Pa FIR=25.250Pa | f=6.25Hz dB=98.3
+  [10467ms] P=66430.52Pa BL=66406.70Pa T=29.48°C | ΔP=23.812Pa FIR=23.813Pa | f=4.69Hz dB=83.9
+  [11468ms] P=66429.10Pa BL=66406.70Pa T=29.48°C | ΔP=22.398Pa FIR=22.294Pa | f=4.69Hz dB=97.5
+  [12469ms] P=66430.98Pa BL=66406.70Pa T=29.49°C | ΔP=24.281Pa FIR=23.819Pa | f=4.69Hz dB=97.5
+  [13476ms] P=66431.98Pa BL=66406.70Pa T=29.49°C | ΔP=25.273Pa FIR=25.273Pa | f=6.25Hz dB=91.2
+  [14483ms] P=66431.33Pa BL=66406.70Pa T=29.49°C | ΔP=24.625Pa FIR=24.648Pa | f=14.06Hz dB=83.6
+  [15490ms] P=66432.63Pa BL=66406.70Pa T=29.50°C | ΔP=25.922Pa FIR=25.964Pa | f=4.69Hz dB=83.9
+  [16491ms] P=66432.84Pa BL=66406.70Pa T=29.50°C | ΔP=26.141Pa FIR=26.141Pa | f=4.69Hz dB=83.9
+  [17498ms] P=66432.20Pa BL=66406.70Pa T=29.50°C | ΔP=25.492Pa FIR=25.475Pa | f=4.69Hz dB=86.5
+  [18500ms] P=66433.21Pa BL=66406.70Pa T=29.50°C | ΔP=26.508Pa FIR=26.464Pa | f=4.69Hz dB=87.3
+[DIAG] winMean=26.25Pa RMS=0.218Pa dB=80.7 dB
+[SPECTRUM] peakBin=3 freq=4.69Hz peakMag=3.0 | bins 3-12: 3.04 2.81 1.20 1.33 0.75 1.55 1.48 1.01 0.85 0.44
+  [19508ms] P=66433.14Pa BL=66406.70Pa T=29.51°C | ΔP=26.437Pa FIR=26.437Pa | f=4.69Hz dB=80.7
+  [20510ms] P=66433.02Pa BL=66406.70Pa T=29.50°C | ΔP=26.312Pa FIR=26.250Pa | f=4.69Hz dB=80.7
+  [21517ms] P=66434.39Pa BL=66406.70Pa T=29.51°C | ΔP=27.687Pa FIR=27.606Pa | f=7.81Hz dB=79.2
+  [22524ms] P=66434.90Pa BL=66406.70Pa T=29.51°C | ΔP=28.195Pa FIR=28.195Pa | f=4.69Hz dB=86.3
+  [23530ms] P=66435.84Pa BL=66406.70Pa T=29.52°C | ΔP=29.133Pa FIR=29.083Pa | f=6.25Hz dB=87.1
+  [24532ms] P=66435.76Pa BL=66406.70Pa T=29.52°C | ΔP=29.055Pa FIR=29.073Pa | f=6.25Hz dB=87.1
+  [25533ms] P=66436.61Pa BL=66406.70Pa T=29.52°C | ΔP=29.906Pa FIR=29.906Pa | f=4.69Hz dB=76.3
+  [26540ms] P=66437.99Pa BL=66406.70Pa T=29.53°C | ΔP=31.289Pa FIR=31.411Pa | f=4.69Hz dB=85.7
+  [27547ms] P=66437.39Pa BL=66406.70Pa T=29.53°C | ΔP=30.687Pa FIR=30.337Pa | f=7.81Hz dB=88.5
+  [28548ms] P=66438.34Pa BL=66406.70Pa T=29.53°C | ΔP=31.633Pa FIR=31.633Pa | f=7.81Hz dB=88.5
+  [29555ms] P=66436.88Pa BL=66406.70Pa T=29.53°C | ΔP=30.172Pa FIR=30.084Pa | f=6.25Hz dB=84.6
+  [30562ms] P=66436.91Pa BL=66436.51Pa T=29.53°C | ΔP=0.406Pa FIR=0.569Pa | f=6.25Hz dB=112.9
+  [31564ms] P=66437.22Pa BL=66436.51Pa T=29.53°C | ΔP=0.711Pa FIR=0.711Pa | f=4.69Hz dB=86.9
+[ 32111][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[ 33145][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [33160ms] P=83483.41Pa BL=83483.41Pa T=24.07°C | ΔP=0.000Pa FIR=0.305Pa | f=4.69Hz dB=86.9
+[ 33604][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[DIAG] winMean=3.30Pa RMS=4.798Pa dB=107.6 dB
+[SPECTRUM] peakBin=3 freq=4.69Hz peakMag=117.4 | bins 3-12: 117.41 56.33 30.69 27.17 21.31 22.99 15.37 11.23 13.83 12.82
+  [34166ms] P=66445.98Pa BL=66425.92Pa T=29.59°C | ΔP=20.062Pa FIR=18.491Pa | f=4.69Hz dB=107.6
+[ 34762][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[ 35568][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+  [35580ms] P=83483.41Pa BL=83483.41Pa T=24.07°C | ΔP=0.000Pa FIR=28.141Pa | f=4.69Hz dB=107.6
+[ 36154][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[ 37162][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[ 38170][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[ 39178][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[ 40186][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [40198ms] P=83483.41Pa BL=83483.41Pa T=24.07°C | ΔP=0.000Pa FIR=20.687Pa | f=6.25Hz dB=118.2
+  [41200ms] P=66538.88Pa BL=66498.93Pa T=30.16°C | ΔP=39.953Pa FIR=39.953Pa | f=6.25Hz dB=118.2
+[ 42330][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [42342ms] P=66538.22Pa BL=66498.93Pa T=30.16°C | ΔP=39.289Pa FIR=39.789Pa | f=6.25Hz dB=118.2
+[ 43155][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+  [43345ms] P=83483.41Pa BL=83483.41Pa T=24.07°C | ΔP=0.000Pa FIR=0.000Pa | f=4.69Hz dB=116.5
+[ 44453][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [44465ms] P=66523.25Pa BL=66520.09Pa T=30.06°C | ΔP=3.156Pa FIR=1.681Pa | f=4.69Hz dB=116.5
+[ 44890][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[ 45897][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [45909ms] P=83483.41Pa BL=83483.41Pa T=24.07°C | ΔP=0.000Pa FIR=2.425Pa | f=4.69Hz dB=116.5
+  [46917ms] P=66547.62Pa BL=66506.29Pa T=30.22°C | ΔP=41.328Pa FIR=41.328Pa | f=6.25Hz dB=115.4
+  [47925ms] P=66555.89Pa BL=66506.29Pa T=30.27°C | ΔP=49.602Pa FIR=49.577Pa | f=6.25Hz dB=114.1
+  [48926ms] P=66558.17Pa BL=66506.29Pa T=30.29°C | ΔP=51.883Pa FIR=51.370Pa | f=4.69Hz dB=92.9
+  [49928ms] P=66559.38Pa BL=66506.29Pa T=30.29°C | ΔP=53.086Pa FIR=53.086Pa | f=4.69Hz dB=92.9
+  [50935ms] P=66561.30Pa BL=66506.29Pa T=30.30°C | ΔP=55.016Pa FIR=54.963Pa | f=7.81Hz dB=89.8
+  [51942ms] P=66560.77Pa BL=66506.29Pa T=30.30°C | ΔP=54.484Pa FIR=54.359Pa | f=7.81Hz dB=84.6
+  [52944ms] P=66561.52Pa BL=66506.29Pa T=30.31°C | ΔP=55.227Pa FIR=55.227Pa | f=7.81Hz dB=84.6
+  [53951ms] P=66560.41Pa BL=66506.29Pa T=30.30°C | ΔP=54.117Pa FIR=54.177Pa | f=4.69Hz dB=88.6
+  [54959ms] P=66557.13Pa BL=66506.29Pa T=30.28°C | ΔP=50.844Pa FIR=50.881Pa | f=6.25Hz dB=93.8
+[DIAG] winMean=50.37Pa RMS=1.441Pa dB=97.2 dB
+[SPECTRUM] peakBin=9 freq=14.06Hz peakMag=4.0 | bins 3-12: 1.71 1.03 1.36 0.81 1.25 3.39 4.00 2.76 1.67 0.71
+  [55962ms] P=66553.64Pa BL=66506.29Pa T=30.26°C | ΔP=47.352Pa FIR=47.352Pa | f=14.06Hz dB=97.2
+  [56964ms] P=66551.37Pa BL=66506.29Pa T=30.24°C | ΔP=45.078Pa FIR=45.106Pa | f=14.06Hz dB=97.2
+  [57972ms] P=66551.02Pa BL=66506.29Pa T=30.24°C | ΔP=44.734Pa FIR=44.734Pa | f=9.38Hz dB=94.2
+  [58980ms] P=66550.41Pa BL=66506.29Pa T=30.24°C | ΔP=44.117Pa FIR=44.117Pa | f=4.69Hz dB=95.3
+  [59987ms] P=66546.11Pa BL=66506.29Pa T=30.21°C | ΔP=39.820Pa FIR=39.720Pa | f=4.69Hz dB=101.3
+  [60990ms] P=66557.67Pa BL=66506.29Pa T=30.28°C | ΔP=51.383Pa FIR=51.383Pa | f=4.69Hz dB=101.3
+  [61997ms] P=66558.54Pa BL=66506.29Pa T=30.29°C | ΔP=52.250Pa FIR=52.250Pa | f=9.38Hz dB=107.1
+  [63000ms] P=66548.34Pa BL=66506.29Pa T=30.23°C | ΔP=42.055Pa FIR=42.219Pa | f=4.69Hz dB=106.2
+  [64007ms] P=66545.79Pa BL=66506.29Pa T=30.21°C | ΔP=39.500Pa FIR=39.500Pa | f=4.69Hz dB=98.2
+  [65009ms] P=66544.01Pa BL=66506.29Pa T=30.19°C | ΔP=37.719Pa FIR=37.722Pa | f=4.69Hz dB=98.2
+  [66017ms] P=66541.79Pa BL=66506.29Pa T=30.18°C | ΔP=35.500Pa FIR=35.556Pa | f=6.25Hz dB=92.0
+  [67025ms] P=66541.46Pa BL=66506.29Pa T=30.18°C | ΔP=35.172Pa FIR=35.172Pa | f=6.25Hz dB=94.1
+  [68033ms] P=66539.14Pa BL=66506.29Pa T=30.16°C | ΔP=32.852Pa FIR=32.852Pa | f=6.25Hz dB=94.8
+  [69035ms] P=66538.29Pa BL=66506.29Pa T=30.16°C | ΔP=32.000Pa FIR=32.019Pa | f=6.25Hz dB=94.8
+[DIAG] winMean=32.56Pa RMS=0.566Pa dB=89.0 dB
+[SPECTRUM] peakBin=4 freq=6.25Hz peakMag=4.4 | bins 3-12: 2.51 4.41 1.94 1.70 2.92 0.89 0.94 0.74 0.85 1.37
+  [70039ms] P=66537.19Pa BL=66506.29Pa T=30.15°C | ΔP=30.898Pa FIR=30.898Pa | f=6.25Hz dB=89.0
+  [71047ms] P=66537.16Pa BL=66506.29Pa T=30.15°C | ΔP=30.867Pa FIR=31.047Pa | f=6.25Hz dB=81.4
+  [72055ms] P=66537.74Pa BL=66506.29Pa T=30.16°C | ΔP=31.453Pa FIR=31.481Pa | f=7.81Hz dB=89.2
+  [73058ms] P=66536.43Pa BL=66506.29Pa T=30.15°C | ΔP=30.141Pa FIR=30.141Pa | f=7.81Hz dB=89.2
+  [74066ms] P=66534.16Pa BL=66506.29Pa T=30.13°C | ΔP=27.867Pa FIR=27.892Pa | f=4.69Hz dB=89.4
+  [75073ms] P=66536.84Pa BL=66506.29Pa T=30.15°C | ΔP=30.555Pa FIR=30.541Pa | f=4.69Hz dB=93.9
+  [76076ms] P=66536.66Pa BL=66536.76Pa T=30.15°C | ΔP=-0.094Pa FIR=-0.094Pa | f=7.81Hz dB=100.1
+  [77078ms] P=66535.62Pa BL=66536.76Pa T=30.15°C | ΔP=-1.141Pa FIR=-1.138Pa | f=7.81Hz dB=100.1
+  [78086ms] P=66534.90Pa BL=66536.76Pa T=30.14°C | ΔP=-1.859Pa FIR=-1.459Pa | f=4.69Hz dB=90.7
+  [79094ms] P=66534.74Pa BL=66536.76Pa T=30.14°C | ΔP=-2.016Pa FIR=-2.016Pa | f=4.69Hz dB=96.7
+  [80102ms] P=66532.46Pa BL=66536.76Pa T=30.13°C | ΔP=-4.297Pa FIR=-4.216Pa | f=4.69Hz dB=90.3
+  [81104ms] P=66534.12Pa BL=66536.76Pa T=30.13°C | ΔP=-2.641Pa FIR=-2.766Pa | f=4.69Hz dB=90.3
+  [82112ms] P=66534.43Pa BL=66536.76Pa T=30.14°C | ΔP=-2.328Pa FIR=-2.328Pa | f=4.69Hz dB=88.9
+[DIAG] winMean=-2.51Pa RMS=0.376Pa dB=85.5 dB
+[SPECTRUM] peakBin=3 freq=4.69Hz peakMag=6.6 | bins 3-12: 6.58 3.61 5.30 2.34 2.25 0.98 1.85 1.31 0.66 1.02
+  [83115ms] P=66532.87Pa BL=66536.76Pa T=30.13°C | ΔP=-3.891Pa FIR=-3.750Pa | f=4.69Hz dB=85.5
+  [84117ms] P=66532.95Pa BL=66536.76Pa T=30.13°C | ΔP=-3.813Pa FIR=-3.813Pa | f=4.69Hz dB=85.5
+  [85125ms] P=66533.78Pa BL=66536.76Pa T=30.13°C | ΔP=-2.977Pa FIR=-2.977Pa | f=7.81Hz dB=86.9
+  [86133ms] P=66535.38Pa BL=66536.76Pa T=30.14°C | ΔP=-1.383Pa FIR=-1.280Pa | f=4.69Hz dB=85.7
+  [87140ms] P=66533.87Pa BL=66536.76Pa T=30.14°C | ΔP=-2.891Pa FIR=-2.884Pa | f=9.38Hz dB=90.1
+  [88142ms] P=66533.88Pa BL=66536.76Pa T=30.13°C | ΔP=-2.875Pa FIR=-2.875Pa | f=9.38Hz dB=90.1
+  [89150ms] P=66534.75Pa BL=66536.76Pa T=30.14°C | ΔP=-2.008Pa FIR=-2.108Pa | f=4.69Hz dB=83.4
+  [90152ms] P=66535.75Pa BL=66536.76Pa T=30.15°C | ΔP=-1.008Pa FIR=-1.008Pa | f=4.69Hz dB=88.7
+  [91160ms] P=66537.23Pa BL=66536.76Pa T=30.15°C | ΔP=0.469Pa FIR=0.469Pa | f=6.25Hz dB=89.8
+  [92162ms] P=66535.43Pa BL=66536.76Pa T=30.15°C | ΔP=-1.328Pa FIR=-1.455Pa | f=6.25Hz dB=89.8
+  [93170ms] P=66538.65Pa BL=66536.76Pa T=30.16°C | ΔP=1.891Pa FIR=1.891Pa | f=4.69Hz dB=90.9
+  [94178ms] P=66538.27Pa BL=66536.76Pa T=30.16°C | ΔP=1.508Pa FIR=1.508Pa | f=4.69Hz dB=92.9
+  [95186ms] P=66539.45Pa BL=66536.76Pa T=30.17°C | ΔP=2.695Pa FIR=2.439Pa | f=4.69Hz dB=85.9
+  [96188ms] P=66540.92Pa BL=66536.76Pa T=30.18°C | ΔP=4.164Pa FIR=4.164Pa | f=4.69Hz dB=85.9
+[DIAG] winMean=3.18Pa RMS=0.660Pa dB=90.4 dB
+[SPECTRUM] peakBin=3 freq=4.69Hz peakMag=8.3 | bins 3-12: 8.29 6.47 4.39 2.37 1.72 0.58 0.57 0.60 0.57 1.08
+  [97192ms] P=66541.04Pa BL=66536.76Pa T=30.18°C | ΔP=4.281Pa FIR=4.314Pa | f=4.69Hz dB=90.4
+  [98200ms] P=66542.38Pa BL=66536.76Pa T=30.18°C | ΔP=5.617Pa FIR=5.092Pa | f=6.25Hz dB=82.9
+  [99208ms] P=66543.50Pa BL=66536.76Pa T=30.20°C | ΔP=6.742Pa FIR=6.742Pa | f=4.69Hz dB=90.5
+  [100209ms] P=66557.78Pa BL=66536.76Pa T=30.29°C | ΔP=21.023Pa FIR=20.744Pa | f=4.69Hz dB=90.5
+  [101217ms] P=66565.32Pa BL=66536.76Pa T=30.33°C | ΔP=28.562Pa FIR=29.008Pa | f=6.25Hz dB=109.1
+  [102224ms] P=66560.28Pa BL=66536.76Pa T=30.30°C | ΔP=23.523Pa FIR=23.523Pa | f=4.69Hz dB=101.0
+  [103225ms] P=66557.03Pa BL=66536.76Pa T=30.28°C | ΔP=20.273Pa FIR=20.314Pa | f=7.81Hz dB=94.2
+  [104227ms] P=66555.74Pa BL=66536.76Pa T=30.27°C | ΔP=18.984Pa FIR=18.903Pa | f=7.81Hz dB=94.2
+  [105234ms] P=66557.30Pa BL=66536.76Pa T=30.28°C | ΔP=20.539Pa FIR=20.539Pa | f=4.69Hz dB=86.5
+  [106241ms] P=66557.25Pa BL=66558.06Pa T=30.28°C | ΔP=-0.812Pa FIR=-0.800Pa | f=4.69Hz dB=89.6
+  [107249ms] P=66555.87Pa BL=66558.06Pa T=30.27°C | ΔP=-2.195Pa FIR=-2.003Pa | f=4.69Hz dB=111.5
+  [108251ms] P=66554.80Pa BL=66558.06Pa T=30.27°C | ΔP=-3.266Pa FIR=-3.266Pa | f=4.69Hz dB=111.5
+  [109258ms] P=66554.05Pa BL=66558.06Pa T=30.26°C | ΔP=-4.016Pa FIR=-4.052Pa | f=4.69Hz dB=87.8
+[DIAG] winMean=-3.74Pa RMS=0.339Pa dB=84.6 dB
+[SPECTRUM] peakBin=5 freq=7.81Hz peakMag=5.3 | bins 3-12: 1.93 2.14 5.27 2.45 0.99 0.94 0.93 0.70 0.28 0.57
+  [110262ms] P=66553.55Pa BL=66558.06Pa T=30.26°C | ΔP=-4.516Pa FIR=-4.503Pa | f=7.81Hz dB=84.6
+  [111269ms] P=66553.65Pa BL=66558.06Pa T=30.26°C | ΔP=-4.414Pa FIR=-4.414Pa | f=4.69Hz dB=84.6
+  [112271ms] P=66554.52Pa BL=66558.06Pa T=30.26°C | ΔP=-3.547Pa FIR=-3.697Pa | f=4.69Hz dB=84.6
+  [113279ms] P=66553.38Pa BL=66558.06Pa T=30.25°C | ΔP=-4.687Pa FIR=-4.750Pa | f=4.69Hz dB=87.3
+  [114286ms] P=66552.09Pa BL=66558.06Pa T=30.25°C | ΔP=-5.969Pa FIR=-5.969Pa | f=7.81Hz dB=87.5
+  [115288ms] P=66550.61Pa BL=66558.06Pa T=30.24°C | ΔP=-7.453Pa FIR=-7.347Pa | f=7.81Hz dB=87.5
+  [116295ms] P=66548.83Pa BL=66558.06Pa T=30.23°C | ΔP=-9.234Pa FIR=-9.284Pa | f=4.69Hz dB=88.6
+  [117297ms] P=66548.81Pa BL=66558.06Pa T=30.23°C | ΔP=-9.250Pa FIR=-9.250Pa | f=6.25Hz dB=92.3
+  [118305ms] P=66548.05Pa BL=66558.06Pa T=30.22°C | ΔP=-10.008Pa FIR=-10.048Pa | f=4.69Hz dB=84.9
+  [119307ms] P=66547.80Pa BL=66558.06Pa T=30.22°C | ΔP=-10.266Pa FIR=-10.266Pa | f=4.69Hz dB=84.9
+  [120314ms] P=66546.80Pa BL=66558.06Pa T=30.22°C | ΔP=-11.258Pa FIR=-11.258Pa | f=7.81Hz dB=82.2
+  [121322ms] P=66547.14Pa BL=66558.06Pa T=30.21°C | ΔP=-10.922Pa FIR=-11.119Pa | f=9.38Hz dB=88.9
+  [122330ms] P=66546.71Pa BL=66558.06Pa T=30.21°C | ΔP=-11.352Pa FIR=-11.370Pa | f=4.69Hz dB=86.1
+  [123331ms] P=66547.74Pa BL=66558.06Pa T=30.22°C | ΔP=-10.320Pa FIR=-10.320Pa | f=4.69Hz dB=86.1
+[DIAG] winMean=-11.16Pa RMS=0.557Pa dB=88.9 dB
+[SPECTRUM] peakBin=4 freq=6.25Hz peakMag=6.8 | bins 3-12: 5.52 6.83 3.93 1.69 1.05 1.29 0.89 0.38 0.87 0.43
+  [124335ms] P=66547.87Pa BL=66558.06Pa T=30.22°C | ΔP=-10.195Pa FIR=-10.162Pa | f=6.25Hz dB=88.9
+  [125342ms] P=66547.40Pa BL=66558.06Pa T=30.22°C | ΔP=-10.664Pa FIR=-10.664Pa | f=4.69Hz dB=85.8
+  [126350ms] P=66548.05Pa BL=66558.06Pa T=30.22°C | ΔP=-10.008Pa FIR=-10.008Pa | f=7.81Hz dB=78.2
+  [127351ms] P=66548.87Pa BL=66558.06Pa T=30.23°C | ΔP=-9.195Pa FIR=-9.041Pa | f=7.81Hz dB=78.2
+  [128359ms] P=66551.76Pa BL=66558.06Pa T=30.24°C | ΔP=-6.305Pa FIR=-6.305Pa | f=4.69Hz dB=85.4
+  [129367ms] P=66553.61Pa BL=66558.06Pa T=30.26°C | ΔP=-4.453Pa FIR=-4.453Pa | f=6.25Hz dB=94.4
+  [130369ms] P=66557.65Pa BL=66558.06Pa T=30.28°C | ΔP=-0.414Pa FIR=-0.466Pa | f=12.50Hz dB=98.1
+  [131370ms] P=66562.89Pa BL=66558.06Pa T=30.31°C | ΔP=4.828Pa FIR=4.828Pa | f=12.50Hz dB=98.1
+  [132378ms] P=66568.08Pa BL=66558.06Pa T=30.35°C | ΔP=10.016Pa FIR=9.909Pa | f=7.81Hz dB=101.1
+  [133386ms] P=66568.86Pa BL=66558.06Pa T=30.35°C | ΔP=10.797Pa FIR=10.581Pa | f=6.25Hz dB=100.2
+  [134394ms] P=66567.61Pa BL=66558.06Pa T=30.35°C | ΔP=9.547Pa FIR=9.547Pa | f=4.69Hz dB=91.7
+  [135396ms] P=66570.45Pa BL=66558.06Pa T=30.36°C | ΔP=12.383Pa FIR=12.386Pa | f=4.69Hz dB=91.7
+  [136404ms] P=66575.47Pa BL=66573.70Pa T=30.39°C | ΔP=1.773Pa FIR=1.403Pa | f=4.69Hz dB=93.5
+[DIAG] winMean=5.14Pa RMS=5.830Pa dB=109.3 dB
+[SPECTRUM] peakBin=3 freq=4.69Hz peakMag=67.9 | bins 3-12: 67.87 45.22 46.14 31.22 22.07 23.85 21.37 14.12 12.71 14.46
+  [137408ms] P=66579.06Pa BL=66573.70Pa T=30.42°C | ΔP=5.367Pa FIR=5.367Pa | f=4.69Hz dB=109.3
+  [138416ms] P=66582.59Pa BL=66573.70Pa T=30.44°C | ΔP=8.891Pa FIR=8.792Pa | f=6.25Hz dB=97.8
+  [139418ms] P=66586.29Pa BL=66573.70Pa T=30.46°C | ΔP=12.594Pa FIR=12.513Pa | f=6.25Hz dB=97.8
+  [140425ms] P=66586.92Pa BL=66573.70Pa T=30.47°C | ΔP=13.227Pa FIR=13.227Pa | f=7.81Hz dB=95.1
+  [141433ms] P=66588.97Pa BL=66573.70Pa T=30.48°C | ΔP=15.273Pa FIR=15.194Pa | f=4.69Hz dB=90.3
+  [142441ms] P=66592.85Pa BL=66573.70Pa T=30.51°C | ΔP=19.156Pa FIR=18.805Pa | f=4.69Hz dB=96.4
+  [143443ms] P=66597.01Pa BL=66573.70Pa T=30.53°C | ΔP=23.312Pa FIR=23.312Pa | f=4.69Hz dB=96.4
+  [144445ms] P=66597.45Pa BL=66573.70Pa T=30.53°C | ΔP=23.750Pa FIR=23.472Pa | f=7.81Hz dB=97.0
+  [145453ms] P=66593.43Pa BL=66573.70Pa T=30.51°C | ΔP=19.734Pa FIR=19.753Pa | f=9.38Hz dB=89.9
+  [146460ms] P=66592.46Pa BL=66573.70Pa T=30.50°C | ΔP=18.766Pa FIR=18.766Pa | f=10.94Hz dB=89.8
+  [147462ms] P=66590.00Pa BL=66573.70Pa T=30.49°C | ΔP=16.305Pa FIR=16.677Pa | f=10.94Hz dB=89.8
+  [148470ms] P=66579.11Pa BL=66573.70Pa T=30.42°C | ΔP=5.414Pa FIR=5.639Pa | f=4.69Hz dB=101.9
+  [149478ms] P=66578.99Pa BL=66573.70Pa T=30.42°C | ΔP=5.297Pa FIR=5.297Pa | f=9.38Hz dB=92.9
+  [150480ms] P=66577.02Pa BL=66573.70Pa T=30.41°C | ΔP=3.328Pa FIR=3.672Pa | f=9.38Hz dB=92.9
+[DIAG] winMean=5.19Pa RMS=0.582Pa dB=89.3 dB
+[SPECTRUM] peakBin=3 freq=4.69Hz peakMag=8.3 | bins 3-12: 8.32 3.03 1.08 2.47 2.64 0.80 1.02 0.39 0.92 1.40
+  [151484ms] P=66577.48Pa BL=66573.70Pa T=30.41°C | ΔP=3.789Pa FIR=3.789Pa | f=4.69Hz dB=89.3
+[152932][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [152944ms] P=66576.77Pa BL=66573.70Pa T=30.40°C | ΔP=3.070Pa FIR=3.495Pa | f=4.69Hz dB=84.5
+[153328][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+  [153951ms] P=66602.49Pa BL=66581.91Pa T=30.57°C | ΔP=20.586Pa FIR=19.558Pa | f=4.69Hz dB=84.5
+  [154959ms] P=66624.01Pa BL=66581.91Pa T=30.70°C | ΔP=42.102Pa FIR=41.070Pa | f=4.69Hz dB=114.5
+[155135][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[155388][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[156652][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [156664ms] P=83483.41Pa BL=83483.41Pa T=24.07°C | ΔP=0.000Pa FIR=6.155Pa | f=4.69Hz dB=114.5
+  [157666ms] P=66630.98Pa BL=66593.80Pa T=30.75°C | ΔP=37.188Pa FIR=37.188Pa | f=4.69Hz dB=118.5
+  [158674ms] P=66639.46Pa BL=66593.80Pa T=30.80°C | ΔP=45.664Pa FIR=45.570Pa | f=6.25Hz dB=112.8
+  [159682ms] P=66641.87Pa BL=66593.80Pa T=30.81°C | ΔP=48.070Pa FIR=47.645Pa | f=4.69Hz dB=97.1
+[160246][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[161254][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[162037][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+  [162049ms] P=83483.41Pa BL=83483.41Pa T=24.07°C | ΔP=0.000Pa FIR=43.297Pa | f=4.69Hz dB=97.1
+  [163057ms] P=66645.91Pa BL=66605.68Pa T=30.83°C | ΔP=40.234Pa FIR=40.234Pa | f=4.69Hz dB=119.4
+  [164058ms] P=66649.52Pa BL=66605.68Pa T=30.86°C | ΔP=43.844Pa FIR=43.819Pa | f=4.69Hz dB=119.4
+  [165065ms] P=66654.11Pa BL=66605.68Pa T=30.89°C | ΔP=48.430Pa FIR=47.830Pa | f=6.25Hz dB=101.8
+  [166072ms] P=66656.18Pa BL=66605.68Pa T=30.90°C | ΔP=50.500Pa FIR=50.500Pa | f=6.25Hz dB=98.4
+  [167074ms] P=66655.51Pa BL=66605.68Pa T=30.89°C | ΔP=49.828Pa FIR=50.016Pa | f=4.69Hz dB=90.5
+  [168075ms] P=66655.80Pa BL=66605.68Pa T=30.90°C | ΔP=50.117Pa FIR=50.117Pa | f=4.69Hz dB=90.5
+[DIAG] winMean=50.01Pa RMS=0.441Pa dB=86.9 dB
+[SPECTRUM] peakBin=3 freq=4.69Hz peakMag=6.5 | bins 3-12: 6.46 3.37 4.57 4.66 1.88 1.35 0.66 0.47 1.06 1.48
+[169666][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [169681ms] P=66651.52Pa BL=66605.68Pa T=30.88°C | ΔP=45.836Pa FIR=46.061Pa | f=4.69Hz dB=86.9
+[169972][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[171640][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [172413ms] P=66642.05Pa BL=66625.48Pa T=30.81°C | ΔP=16.570Pa FIR=15.670Pa | f=4.69Hz dB=119.6
+[173465][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[174473][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [174491ms] P=83483.41Pa BL=83483.41Pa T=24.07°C | ΔP=0.000Pa FIR=13.256Pa | f=4.69Hz dB=119.6
+  [175492ms] P=66633.06Pa BL=66592.26Pa T=30.76°C | ΔP=40.805Pa FIR=40.805Pa | f=4.69Hz dB=119.6
+  [176499ms] P=66636.89Pa BL=66592.26Pa T=30.78°C | ΔP=44.633Pa FIR=44.736Pa | f=4.69Hz dB=117.2
+  [177505ms] P=66635.15Pa BL=66592.26Pa T=30.78°C | ΔP=42.891Pa FIR=43.497Pa | f=7.81Hz dB=88.5
+  [178512ms] P=66634.09Pa BL=66592.26Pa T=30.76°C | ΔP=41.828Pa FIR=41.828Pa | f=4.69Hz dB=90.6
+  [179513ms] P=66633.09Pa BL=66592.26Pa T=30.76°C | ΔP=40.836Pa FIR=40.980Pa | f=4.69Hz dB=90.6
+  [180514ms] P=66633.23Pa BL=66592.26Pa T=30.76°C | ΔP=40.977Pa FIR=40.977Pa | f=6.25Hz dB=91.1
+  [181521ms] P=66634.02Pa BL=66592.26Pa T=30.76°C | ΔP=41.766Pa FIR=41.766Pa | f=4.69Hz dB=91.5
+  [182521ms] P=66631.06Pa BL=66592.26Pa T=30.75°C | ΔP=38.805Pa FIR=38.702Pa | f=4.69Hz dB=91.5
+  [183528ms] P=66631.77Pa BL=66592.26Pa T=30.75°C | ΔP=39.516Pa FIR=39.516Pa | f=4.69Hz dB=94.7
+  [184535ms] P=66632.74Pa BL=66592.26Pa T=30.76°C | ΔP=40.484Pa FIR=40.484Pa | f=9.38Hz dB=85.9
+  [185541ms] P=66631.72Pa BL=66592.26Pa T=30.75°C | ΔP=39.461Pa FIR=39.355Pa | f=4.69Hz dB=82.9
+  [186542ms] P=66629.41Pa BL=66592.26Pa T=30.74°C | ΔP=37.156Pa FIR=37.156Pa | f=4.69Hz dB=82.9
+[DIAG] winMean=38.21Pa RMS=0.942Pa dB=93.5 dB
+[SPECTRUM] peakBin=7 freq=10.94Hz peakMag=3.8 | bins 3-12: 3.08 2.85 1.59 2.60 3.79 3.22 1.29 1.42 2.43 1.20
+  [187545ms] P=66627.05Pa BL=66592.26Pa T=30.72°C | ΔP=34.789Pa FIR=34.794Pa | f=10.94Hz dB=93.5
+  [188551ms] P=66623.51Pa BL=66592.26Pa T=30.70°C | ΔP=31.250Pa FIR=31.456Pa | f=4.69Hz dB=94.1
+  [189558ms] P=66621.62Pa BL=66592.26Pa T=30.69°C | ΔP=29.359Pa FIR=29.359Pa | f=6.25Hz dB=99.0
+  [190559ms] P=66618.90Pa BL=66592.26Pa T=30.67°C | ΔP=26.641Pa FIR=26.711Pa | f=6.25Hz dB=99.0

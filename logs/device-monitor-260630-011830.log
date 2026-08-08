@@ -1,0 +1,107 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+
+
+╔══════════════════════════════════════════╗
+║   DMP390(BMP390) 次声波检测系统 v2.0   ║
+╠══════════════════════════════════════════╣
+║  MCU:    ESP32 Dev Module               ║
+║  传感器: BMP390 (DMP390兼容)            ║
+║  I2C:    SDA=GPIO18, SCL=GPIO19         ║
+║  OLED:   SDA=GPIO21, SCL=GPIO22         ║
+║  采样率: 200 Hz                          ║
+║  FFT:    1024点, Hamming窗              ║
+║  FIR:    65阶带通 (0.1~20Hz)            ║
+║  LED:    GPIO2 (板载蓝色LED)             ║
+╚══════════════════════════════════════════╝
+
+[BOOT] ESP32 Chip: ESP32-D0WD-V3
+[BOOT] CPU Freq:   240 MHz
+[BOOT] Flash Size: 4 MB
+[BOOT] Free Heap:  324 KB
+
+═══════════ DMP390 传感器初始化 ═══════════
+
+[DMP390] ╔══════════════════════════════╗
+[DMP390] ║  BMP390 诊断式初始化      ║
+[DMP390] ╠══════════════════════════════╣
+[DMP390] ║ I2C速率: 10kHz (极低速)   ║
+[DMP390] ║ 自动尝试 3 组引脚组合      ║
+[DMP390] ╚══════════════════════════════╝
+
+[DMP390] ── 尝试 GPIO18/GPIO19 ──
+[DMP390] 静态电平: SDA=LOW  SCL=HIGH ⚠ 有引脚被拉低! 检查接线是否短路
+[DMP390] 扫描 SDA=GPIO18 SCL=GPIO19 (10kHz)...
+[DMP390]   0x1 err=5 (超时)
+[DMP390]   0x2 err=5 (超时)
+[DMP390]   0x3 err=5 (超时)
+[DMP390]   0x3C err=5 (超时)
+[DMP390]   0x76 err=5 (超时)
+[DMP390]   0x77 err=5 (超时)
+[DMP390] GPIO18/19: 无设备 → 跳过
+
+[DMP390] ── 尝试 GPIO21/GPIO22 ──
+[DMP390] 静态电平: SDA=LOW  SCL=LOW ⚠ 有引脚被拉低! 检查接线是否短路
+[DMP390] 扫描 SDA=GPIO21 SCL=GPIO22 (10kHz)...
+[DMP390]   0x1 err=2 (地址NACK)
+[DMP390]   0x2 err=2 (地址NACK)
+[DMP390]   0x3 err=2 (地址NACK)
+[DMP390]   0x3C err=2 (地址NACK)
+[DMP390]   0x76 err=2 (地址NACK)
+         → BMP390未应答，检查VCC/GND/SDA/SCL
+[DMP390]   0x77 err=2 (地址NACK)
+         → BMP390未应答，检查VCC/GND/SDA/SCL
+[DMP390] GPIO21/22: 无设备 → 跳过
+
+[DMP390] ── 尝试 GPIO22/GPIO21 ──
+[DMP390] 静态电平: SDA=HIGH  SCL=HIGH (正常，上拉有效)
+[DMP390] 扫描 SDA=GPIO22 SCL=GPIO21 (10kHz)...
+[DMP390]   0x1 err=5 (超时)
+[DMP390]   0x2 err=5 (超时)
+[DMP390]   0x3 err=5 (超时)
+[DMP390]   0x3C err=5 (超时)
+[DMP390]   0x76 err=5 (超时)
+[DMP390]   0x77 err=5 (超时)
+[DMP390] GPIO22/21: 无设备 → 跳过
+
+[DMP390] ╔══════════════════════════════╗
+[DMP390] ║  ✗ 全部引脚组合均失败     ║
+[DMP390] ╠══════════════════════════════╣
+[DMP390] ║ 请用万用表测量:           ║
+[DMP390] ║ 1. VCC-GND = 3.3V?         ║
+[DMP390] ║ 2. SDA-GND = ~3.3V?        ║
+[DMP390] ║ 3. SCL-GND = ~3.3V?        ║
+[DMP390] ║                            ║
+[DMP390] ║ 如果SDA/SCL为0V:          ║
+[DMP390] ║ → 缺少4.7kΩ上拉电阻      ║
+[DMP390] ║ → 在SDA接4.7kΩ到3.3V     ║
+[DMP390] ║ → 在SCL接4.7kΩ到3.3V     ║
+[DMP390] ╚══════════════════════════════╝
+
+═══════════ ⚠ 传感器离线，进入诊断模式 ═══════════
+系统将继续运行，LED显示错误双闪模式
+每秒输出诊断信息，请检查:
+  1. DMP390模块是否正确连接
+  2. I2C地址是否为0x76或0x77
+  3. 供电是否为3.3V
+
+  I2C地址对照:
+    SDO脚接GND  → 地址 0x76
+    SDO脚接VCC  → 地址 0x77
+
+[INIT] FIR滤波器... OK
+[INIT] FFT处理模块... OK
+[INIT] OLED显示屏... [  5744][E][Wire.cpp:526] write(): NULL TX buffer pointer
+[  5750][E][Wire.cpp:526] write(): NULL TX buffer pointer
+[  5755][E][Wire.cpp:526] write(): NULL TX buffer pointer
+[  5760][E][Wire.cpp:526] write(): NULL TX buffer pointer
+[  5766][E][Wire.cpp:526] write(): NULL TX buffer pointer
+[  5771][E][Wire.cpp:448] endTransmission(): NULL TX buffer pointer

@@ -1,0 +1,443 @@
+#include <Arduino.h>
+#include <OLED.h>
+#include "BMP390.h"
+#include "FIR_Filter.h"
+#include "FFT_Process.h"
+#include "TestTone.h"
+
+/* ============================================================
+ * DMP390 (BMP390) 次声波检测系统 v3.0
+ *
+ * 数据流：
+ *   DMP390 固定基线差分 → 5点MA → 1024点FFT(窗内去均值)
+ *   → 主频(0.2~20Hz)/RMS/dB SPL/风险等级
+ *   → Serial输出 + OLED显示
+ *
+ * 频段设计: 1024点FFT
+ *   bin 0:     DC (窗内去均值消除)
+ *   bin 1+:    ≥0.195 Hz → 全频段次声波 (0.2~20 Hz)
+ *   分辨率:    0.195 Hz/bin
+ *   SNR 自动过滤安静时的低频漂移
+ *
+ * 自动重校准: 每30秒或 |ΔP|>80Pa 时重置基线
+ * 采样率：200Hz，FFT更新间隔：1024/200 ≈ 5.12秒
+ *
+ * 诊断功能：
+ *   - GPIO2 蓝色LED心跳指示程序运行状态
+ *   - I2C设备扫描，输出诊断信息
+ *   - 传感器离线时自动重试
+ *
+ * ════════════════ 次声波测试信号生成方法 ════════════════
+ *
+ * 方法1: 扬声器 + 信号发生器 (最可控)
+ *   - 电脑运行 Audacity 或在线信号发生器
+ *   - 生成 0.5~20Hz 正弦波 WAV 文件
+ *   - 通过音频放大器驱动大口径低音扬声器 (≥8英寸)
+ *   - 扬声器靠近 BMP390 传感器 (< 10cm)
+ *   - 频率扫描: 从 20Hz 逐渐降到 0.5Hz
+ *
+ * 方法2: 函数发生器 + 功放 + 低音炮
+ *   - 函数发生器输出 0.5~20Hz 正弦波
+ *   - 接入音频功放 (20W+)
+ *   - 驱动低音炮/超低音扬声器
+ *   - 声压级可通过功放音量调节
+ *
+ * 方法3: ESP32 自身 PWM 产生次声波
+ *   - ESP32 DAC (GPIO25/26) 输出正弦波
+ *   - 经 LM386 功放模块放大
+ *   - 驱动小型扬声器或电磁振动器
+ *   - 可编程扫频，自动化测试
+ *
+ * 方法4: 物理激励 (简单快速)
+ *   - 用力关门/拍手 → 产生宽频脉冲 (含次声波)
+ *   - 在传感器旁快速挥动大纸板 → 产生 < 5Hz 压力波
+ *   - 用风扇变速吹向传感器 → 产生持续低频波动
+ *
+ * 方法5: 机械振动器
+ *   - 线性谐振作动器 (LRA) 或偏心振动马达
+ *   - PWM 控制频率 → 产生 1~20Hz 机械振动
+ *   - 通过空气耦合到 BMP390 压力传感器
+ *
+ * ═══════════════════════════════════════════════════════════
+ * ============================================================ */
+
+/* --- ESP32 板载LED (GPIO2, 低电平点亮) --- */
+#define LED_PIN         2
+#define BEEP_PIN         32
+#define ALARM_LED_PIN    33
+#define BTN_UP_PIN       34
+#define BTN_DN_PIN       35
+#define LED_ON()        digitalWrite(LED_PIN, LOW)
+#define LED_OFF()       digitalWrite(LED_PIN, HIGH)
+#define BEEP_ON()       digitalWrite(BEEP_PIN, HIGH)
+#define BEEP_OFF()      digitalWrite(BEEP_PIN, LOW)
+#define ALARM_LED_ON()  digitalWrite(ALARM_LED_PIN, HIGH)
+#define ALARM_LED_OFF() digitalWrite(ALARM_LED_PIN, LOW)
+
+#define BAND_COUNT 5
+static const float bandLow[BAND_COUNT]  = {0.5f,0.5f,5,10,15};
+static const float bandHigh[BAND_COUNT] = {20,5,10,15,20};
+static const char* bandName[BAND_COUNT] = {"0.5-20","0.5-5","5-10","10-15","15-20"};
+static uint8_t currentBand = 0;
+
+/* --- 采样间隔控制 --- */
+static unsigned long lastSampleTime = 0;
+static const unsigned long sampleIntervalUs = 5000;  // 200Hz = 5000us
+
+/* --- 每秒输出一次实时原始数据 --- */
+static unsigned long lastRealtimePrint = 0;
+static const unsigned long realtimePrintInterval = 1000;
+
+/* --- FFT报告计数器 --- */
+static uint32_t fftReportCount = 0;
+
+/* --- 缓存最新FFT结果供实时输出 --- */
+static float latestFreq = -1.0f;  /* -1 表示尚未完成首次FFT */
+static float latestDB   = -999.0f;
+static float latestRMS  = -1.0f;
+
+/* --- 传感器状态标志 --- */
+static bool bmpReady = false;
+
+/* --- LED心跳计数器 --- */
+static unsigned long lastHeartbeat = 0;
+static bool ledState = false;
+
+/* ============================================================
+ * LED 状态指示
+ *
+ * 闪烁模式:
+ *   快速闪烁 (100ms) → 等待串口连接
+ *   慢速闪烁 (500ms) → 正常运行
+ *   双闪 + 停顿     → 传感器初始化失败
+ * ============================================================ */
+static void heartbeatFast()
+{
+    if (millis() - lastHeartbeat > 100)
+    {
+        lastHeartbeat = millis();
+        ledState = !ledState;
+        digitalWrite(LED_PIN, ledState ? LOW : HIGH);
+    }
+}
+
+static void heartbeatNormal()
+{
+    if (millis() - lastHeartbeat > 500)
+    {
+        lastHeartbeat = millis();
+        ledState = !ledState;
+        digitalWrite(LED_PIN, ledState ? LOW : HIGH);
+    }
+}
+
+static void heartbeatError()
+{
+    /* 双闪模式: 亮-灭-亮-灭-长灭 */
+    unsigned long t = millis() % 1500;
+    if (t < 100 || (t > 200 && t < 300))
+    {
+        LED_ON();
+    }
+    else
+    {
+        LED_OFF();
+    }
+}
+
+void setup()
+{
+    pinMode(BEEP_PIN, OUTPUT);
+    pinMode(ALARM_LED_PIN, OUTPUT);
+    pinMode(BTN_UP_PIN, INPUT_PULLUP);
+    pinMode(BTN_DN_PIN, INPUT_PULLUP);
+    BEEP_ON(); ALARM_LED_ON(); delay(80);
+    BEEP_OFF(); ALARM_LED_OFF();
+    pinMode(LED_PIN, OUTPUT);
+    LED_ON();  /* 上电即亮 */
+
+    /* --- 第1步：串口初始化 --- */
+    Serial.begin(115200);
+
+    /* 等待串口稳定并输出启动横幅 */
+    delay(500);
+
+    Serial.println();
+    Serial.println();
+    Serial.println(F("╔══════════════════════════════════════════╗"));
+    Serial.println(F("║   DMP390(BMP390) 次声波检测系统 v3.0   ║"));
+    Serial.println(F("╠══════════════════════════════════════════╣"));
+    Serial.println(F("║  MCU:    ESP32 Dev Module               ║"));
+    Serial.println(F("║  传感器: BMP390 (DMP390兼容)            ║"));
+    Serial.println(F("║  BMP390: SDA=GPIO18, SCL=GPIO19         ║"));
+    Serial.println(F("║  OLED:   SDA=GPIO21, SCL=GPIO22         ║"));
+    Serial.println(F("║  采样率: 200 Hz                          ║"));
+    Serial.println(F("║  FFT:    512点, 50%重叠, 1.28s刷新      ║"));
+    Serial.println(F("║  滤波:   5点MA低通 + 窗内去均值(DC去除) ║"));
+    Serial.println(F("║  LED:    GPIO2 (板载蓝色LED)             ║"));
+    Serial.println(F("╚══════════════════════════════════════════╝"));
+    Serial.println();
+    Serial.print(F("[BOOT] ESP32 Chip: "));
+    Serial.println(ESP.getChipModel());
+    Serial.print(F("[BOOT] CPU Freq:   "));
+    Serial.print(ESP.getCpuFreqMHz());
+    Serial.println(F(" MHz"));
+    Serial.print(F("[BOOT] Flash Size: "));
+    Serial.print(ESP.getFlashChipSize() / 1024 / 1024);
+    Serial.println(F(" MB"));
+    Serial.print(F("[BOOT] Free Heap:  "));
+    Serial.print(ESP.getFreeHeap() / 1024);
+    Serial.println(F(" KB"));
+    Serial.println();
+
+    /* --- 第2步：DMP390传感器初始化（带诊断） --- */
+    Serial.println(F("═══════════ DMP390 传感器初始化 ═══════════"));
+    bmpReady = BMP390_Init();
+
+    if (!bmpReady)
+    {
+        Serial.println();
+        Serial.println(F("═══════════ ⚠ 传感器离线，进入诊断模式 ═══════════"));
+        Serial.println(F("系统将继续运行，LED显示错误双闪模式"));
+        Serial.println(F("每秒输出诊断信息，请检查:"));
+        Serial.println(F("  1. DMP390模块是否正确连接"));
+        Serial.println(F("  2. I2C地址是否为0x76或0x77"));
+        Serial.println(F("  3. 供电是否为3.3V"));
+        Serial.println();
+        Serial.println(F("  I2C地址对照:"));
+        Serial.println(F("    SDO脚接GND  → 地址 0x76"));
+        Serial.println(F("    SDO脚接VCC  → 地址 0x77"));
+        Serial.println();
+    }
+
+    /* --- 第3步：FIR滤波器初始化 --- */
+    Serial.print(F("[INIT] FIR滤波器... "));
+    FIR_Init();
+    Serial.println(F("OK"));
+
+    /* --- 第4步：FFT模块初始化 --- */
+    Serial.print(F("[INIT] FFT处理模块... "));
+    FFT_Init();
+    Serial.println(F("OK"));
+
+    /* --- 第5步：DAC测试信号发生器 --- */
+    Serial.print(F("[INIT] DAC测试信号... "));
+    TestTone_Init();
+    Serial.println(F("OK"));
+
+    /* --- 第6步：OLED初始化 --- */
+    Serial.print(F("[INIT] OLED显示屏... "));
+    if (OLED_Init())
+    {
+        Serial.println(F("OK"));
+        OLED_ShowBoot();
+    }
+    else
+    {
+        Serial.println(F("跳过（未连接）"));
+    }
+
+    /* --- 启动完成 --- */
+    Serial.println();
+    Serial.println(F("═══════════ 系统启动完成 ═══════════"));
+    if (bmpReady)
+    {
+        Serial.println(F("状态: 🟢 正常运行模式"));
+        Serial.println(F("═══════════ DMP390 实时数据流 ═══════════"));
+        Serial.println(F("  时间(ms)  |  气压(Pa)  |  温度(°C)  |  压差(Pa)  |  频率(Hz)  |  dB SPL"));
+        Serial.println(F("----------------------------------------------------------------------------"));
+    }
+    else
+    {
+        Serial.println(F("状态: 🟡 诊断模式（传感器离线）"));
+        Serial.println(F("═══════════ 等待传感器连接... ═══════════"));
+    }
+
+    LED_OFF();
+    lastSampleTime = micros();
+    lastRealtimePrint = millis();
+    lastHeartbeat = millis();
+}
+
+void loop()
+{
+    /* ================================================
+     * LED 心跳指示
+     *
+     * 无传感器 → 错误双闪（提示检查硬件）
+     * 有传感器 → 正常慢闪（系统正常运行）
+     * ================================================ */
+    if (!bmpReady)
+    {
+        heartbeatError();
+
+        /* 每秒输出诊断信息 */
+        if (millis() - lastRealtimePrint >= realtimePrintInterval)
+        {
+            Serial.print(F("[DIAG] "));
+            Serial.print(millis());
+            Serial.println(F(" ms | 传感器离线中..."));
+            Serial.println(F("       尝试重新扫描I2C总线 → 请连接传感器后按RST复位"));
+            lastRealtimePrint = millis();
+        }
+
+        /* 尝试重新初始化传感器 */
+        static unsigned long lastRetry = 0;
+        if (millis() - lastRetry > 5000)
+        {
+            lastRetry = millis();
+            Serial.print(F("[DIAG] 重新尝试初始化传感器... "));
+            if (BMP390_Init())
+            {
+                bmpReady = true;
+                Serial.println(F("成功! 切换到正常运行模式"));
+                Serial.println(F("═══════════ DMP390 实时数据流 ═══════════"));
+                Serial.println(F("  时间(ms)  |  气压(Pa)  |  温度(°C)  |  压差(Pa)  |  频率(Hz)  |  dB SPL"));
+                Serial.println(F("----------------------------------------------------------------------------"));
+            }
+            else
+            {
+                Serial.println(F("仍然失败"));
+            }
+        }
+
+        delay(100);
+        return;
+    }
+
+    heartbeatNormal();
+
+    /* ── 按键 ── */
+    static unsigned long lb=0;
+    if(millis()-lb>300)
+    {
+        if(digitalRead(BTN_UP_PIN)==LOW){currentBand=(currentBand+1)%BAND_COUNT;lb=millis();}
+        if(digitalRead(BTN_DN_PIN)==LOW){currentBand=(currentBand==0)?BAND_COUNT-1:currentBand-1;lb=millis();}
+    }
+
+    /* ── 串口命令: DAC测试信号控制 ── */
+    if (Serial.available())
+    {
+        char cmd = Serial.read();
+        switch (cmd)
+        {
+            case 't': TestTone_NextFreq();  break;  /* 下一频率 */
+            case 'o': TestTone_Enable(!TestTone_IsEnabled()); break;
+            case '0': TestTone_SetFreq(0.0f);  break;  /* 关闭 */
+            case '1': TestTone_SetFreq(5.0f);  break;
+            case '2': TestTone_SetFreq(8.0f);  break;
+            case '3': TestTone_SetFreq(10.0f); break;
+            case '4': TestTone_SetFreq(15.0f); break;
+            case '5': TestTone_SetFreq(20.0f); break;
+            default: break;
+        }
+    }
+
+    /* ================================================
+     * 正常运行模式
+     * ================================================ */
+
+    /* --- 控制采样率 (200Hz) --- */
+    if (micros() - lastSampleTime < sampleIntervalUs)
+    {
+        delayMicroseconds(50);
+        return;
+    }
+    lastSampleTime = micros();
+
+    /* ── DAC 测试信号更新 (200Hz) ── */
+    TestTone_Update();
+
+    /* ================================================
+     * 第1步：读取 DMP390 传感器 (一次 I2C 读)
+     *
+     * BMP390_Update() 同时更新温度+气压缓存，
+     * 后续 ReadXXX() 从缓存读取，不额外通信。
+     * ================================================ */
+    if (!BMP390_Update())
+    {
+        /* 读取失败，跳过本轮 */
+        return;
+    }
+
+    /* --- 第2步：计算差分气压 (当前 - 基线) --- */
+    float deltaPressure = BMP390_ReadDeltaPressure();
+
+    /* --- 第3步：FIR 带通滤波 (0.1~20Hz) --- */
+    float filteredSignal = FIR_Process(deltaPressure);
+
+    /* --- 第4步：送入 FFT 缓冲区 (累积 128 点, ~0.64s刷新) --- */
+    FFT_AddSample(filteredSignal);
+
+    /* --- 第5步：FFT 缓冲区满 → 输出分析报告 --- */
+    if (FFT_IsReady())
+    {
+        fftReportCount++;
+
+        float mainFreq = FFT_GetMainFrequency();
+        float rms      = FFT_GetRMS();
+        float db       = FFT_GetEquivalentDB();
+        float snr      = FFT_GetSNR();
+        RiskLevel_t riskLevel = FFT_GetRiskLevel();
+
+        /* --- 缓存最新结果供实时输出使用 --- */
+        latestFreq = mainFreq;
+        latestDB   = db;
+        latestRMS  = rms;
+
+        /* 频段过滤 */
+        if(mainFreq<bandLow[currentBand]||mainFreq>bandHigh[currentBand])
+            mainFreq=-1;
+
+        /* OLED */
+        OLED_ShowData(mainFreq, rms, db, riskLevel, bandName[currentBand]);
+
+        /* 报警LED+蜂鸣器 */
+        bool inBand=(mainFreq>=bandLow[currentBand]&&mainFreq<=bandHigh[currentBand]);
+        if((riskLevel==LEVEL_WARNING||riskLevel==LEVEL_DANGER)&&inBand)
+        { ALARM_LED_ON(); BEEP_ON(); }
+        else
+        { ALARM_LED_OFF(); BEEP_OFF(); }
+    }
+
+    /* --- 第6步：每秒输出实时数据 (含自适应基线诊断) --- */
+    if (millis() - lastRealtimePrint >= realtimePrintInterval)
+    {
+        /* 气压 + 自适应基线 + 温度 */
+        Serial.print(F("  ["));
+        Serial.print(millis());
+        Serial.print(F("ms] P="));
+        Serial.print(BMP390_ReadPressure(), 2);
+        Serial.print(F("Pa BL="));
+        Serial.print(BMP390_GetBaseline(), 2);
+        Serial.print(F("Pa T="));
+        Serial.print(BMP390_ReadTemperature(), 2);
+        Serial.print(F("°C"));
+
+        /* 信号链路: 差分气压(自适应) → 滤波后 → FFT结果 */
+        Serial.print(F(" | ΔP="));
+        Serial.print(deltaPressure, 3);
+        Serial.print(F("Pa FIR="));
+        Serial.print(filteredSignal, 3);
+        Serial.print(F("Pa"));
+
+        /* FFT 分析结果 (平滑频率 + SNR置信度) */
+        float snr = FFT_GetSNR();
+        Serial.print(F(" | f="));
+        if (latestFreq < 0.0f)
+            Serial.print(F("--"));     /* 首次FFT未完成 */
+        else
+            Serial.print(latestFreq, 2);
+        Serial.print(F("Hz dB="));
+        if (latestDB < -900.0f)
+            Serial.print(F("--"));
+        else
+            Serial.print(latestDB, 1);
+        Serial.print(F(" SNR="));
+        Serial.print(snr, 1);
+        if (snr < 1.8f) Serial.print(F("?"));
+        Serial.println();
+
+        lastRealtimePrint = millis();
+    }
+}

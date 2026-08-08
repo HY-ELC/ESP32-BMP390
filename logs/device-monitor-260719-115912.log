@@ -1,0 +1,55 @@
+ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,w}����0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+
+
+╔══════════════════════════════════════════╗
+║   DMP390(BMP390) 次声波检测系统 v3.0   ║
+╠══════════════════════════════════════════╣
+║  MCU:    ESP32 Dev Module               ║
+║  传感器: BMP390 (DMP390兼容)            ║
+║  BMP390: SDA=GPIO18, SCL=GPIO19         ║
+║  OLED:   SDA=GPIO21, SCL=GPIO22         ║
+║  采样率: 200 Hz                          ║
+║  FFT:    512点, 50%重叠, 1.28s刷新      ║
+║  滤波:   5点MA低通 + 窗内去均值(DC去除) ║
+║  LED:    GPIO2 (板载蓝色LED)             ║
+╚══════════════════════════════════════════╝
+
+[BOOT] ESP32 Chip: ESP32-D0WD
+[BOOT] CPU Freq:   240 MHz
+[BOOT] Flash Size: 4 MB
+[BOOT] Free Heap:  330 KB
+
+═══════════ DMP390 传感器初始化 ═══════════
+[DMP390] ─── BMP390 初始化 (I2C0, GPIO18/19) ───
+[DMP390] 尝试地址 0x77... 失败
+[DMP390] 尝试地址 0x76... 成功!
+[BMP390] bmp.pressure=83483.41
+[BMP390] 单位=Pa
+[DMP390] 基线校准... 65974.78 Pa
+[INIT] FIR滤波器... OK
+[INIT] FFT处理模块... OK
+[INIT] DAC测试信号... [TONE] PWM测试信号就绪 (GPIO23, 5kHz/8bit)
+[TONE] 命令: t=下一频率, 1~5=指定频率, 0=关, o=开关
+[TONE] 频率: 5/8/10/15/20 Hz, Off
+[TONE] 硬件: GPIO23 → 杜邦线 → 靠近BMP390传感器孔
+OK
+[INIT] OLED显示屏... OK
+
+═══════════ 系统启动完成 ═══════════
+状态: 🟢 正常运行模式
+═══════════ DMP390 实时数据流 ═══════════
+  时间(ms)  |  气压(Pa)  |  温度(°C)  |  压差(Pa)  |  频率(Hz)  |  dB SPL
+----------------------------------------------------------------------------
+[SMP] 1
+  [5225ms] P=65992.48Pa BL=65974.78Pa T=26.74°C | ΔP=17.695Pa FIR=5.279Pa | f=--Hz dB=-- SNR=0.0?
+[SMP] 201
+  [6229ms] P=65997.34Pa BL=65974.78Pa T=26.76°C | ΔP=22.562Pa FIR=1.963Pa | f=--Hz dB=-- SNR=0.0?

@@ -1,0 +1,544 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+
+
+╔══════════════════════════════════════════╗
+║   DMP390(BMP390) 次声波检测系统 v2.0   ║
+╠══════════════════════════════════════════╣
+║  MCU:    ESP32 Dev Module               ║
+║  传感器: BMP390 (DMP390兼容)            ║
+║  BMP390: SDA=GPIO21, SCL=GPIO22         ║
+║  OLED:   SDA=GPIO18, SCL=GPIO19         ║
+║  采样率: 200 Hz                          ║
+║  FFT:    1024点, Hamming窗              ║
+║  FIR:    65阶带通 (0.1~20Hz)            ║
+║  LED:    GPIO2 (板载蓝色LED)             ║
+╚══════════════════════════════════════════╝
+
+[BOOT] ESP32 Chip: ESP32-D0WD-V3
+[BOOT] CPU Freq:   240 MHz
+[BOOT] Flash Size: 4 MB
+[BOOT] Free Heap:  323 KB
+
+═══════════ DMP390 传感器初始化 ═══════════
+[DMP390] ─── BMP390 初始化 (Wire, GPIO21/22) ───
+[DMP390] 尝试地址 0x77... 成功!
+[DMP390] 基线校准... 6713548.00 Pa
+[INIT] FIR滤波器... OK
+[INIT] FFT处理模块... OK
+[INIT] OLED显示屏... OK
+
+═══════════ 系统启动完成 ═══════════
+状态: 🟢 正常运行模式
+═══════════ DMP390 实时数据流 ═══════════
+  时间(ms)  |  气压(Pa)  |  温度(°C)  |  压差(Pa)  |  频率(Hz)  |  声压级(dB)
+----------------------------------------------------------------------------
+  5633 ms | Pa: 6646092.50 | °C: 29.68 | ΔPa: -67455.5000 | Freq: 0.00 Hz | dB: 0.0
+  6638 ms | Pa: 6646493.50 | °C: 29.70 | ΔPa: -67054.5000 | Freq: 0.00 Hz | dB: 0.0
+  7642 ms | Pa: 6646898.50 | °C: 29.73 | ΔPa: -66649.5000 | Freq: 0.00 Hz | dB: 0.0
+  8646 ms | Pa: 6647251.00 | °C: 29.75 | ΔPa: -66297.0000 | Freq: 0.00 Hz | dB: 0.0
+  9651 ms | Pa: 6647611.50 | °C: 29.77 | ΔPa: -65936.5000 | Freq: 0.00 Hz | dB: 0.0
+  10655 ms | Pa: 6647936.00 | °C: 29.79 | ΔPa: -65612.0000 | Freq: 0.00 Hz | dB: 0.0
+  11660 ms | Pa: 6648209.50 | °C: 29.81 | ΔPa: -65338.5000 | Freq: 0.00 Hz | dB: 0.0
+  12664 ms | Pa: 6648482.00 | °C: 29.83 | ΔPa: -65066.0000 | Freq: 0.00 Hz | dB: 0.0
+  13668 ms | Pa: 6648710.00 | °C: 29.84 | ΔPa: -64838.0000 | Freq: 0.00 Hz | dB: 0.0
+  14673 ms | Pa: 6648915.50 | °C: 29.85 | ΔPa: -64632.5000 | Freq: 0.00 Hz | dB: 0.0
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #1
+║  主频率:     0.20 Hz
+║  RMS 幅值:   10850.7207 Pa
+║  等效声压级: 80.7 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  15673 ms | Pa: 6649112.00 | °C: 29.87 | ΔPa: -64436.0000 | Freq: 0.20 Hz | dB: 80.7
+[ 16105][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  16678 ms | Pa: 6649281.00 | °C: 29.88 | ΔPa: -64267.0000 | Freq: 0.20 Hz | dB: 80.7
+  17683 ms | Pa: 6649492.00 | °C: 29.89 | ΔPa: -64056.0000 | Freq: 0.20 Hz | dB: 80.7
+[ 18250][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 18258][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 18268][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 18275][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 18320][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[ 19543][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  19555 ms | Pa: 6649810.00 | °C: 29.91 | ΔPa: -63738.0000 | Freq: 0.20 Hz | dB: 80.7
+  20566 ms | Pa: 6649782.00 | °C: 29.91 | ΔPa: -63766.0000 | Freq: 0.20 Hz | dB: 80.7
+  21575 ms | Pa: 6649844.00 | °C: 29.91 | ΔPa: -63704.0000 | Freq: 0.20 Hz | dB: 80.7
+  22584 ms | Pa: 6649919.00 | °C: 29.92 | ΔPa: -63629.0000 | Freq: 0.20 Hz | dB: 80.7
+  23594 ms | Pa: 6649988.00 | °C: 29.92 | ΔPa: -63560.0000 | Freq: 0.20 Hz | dB: 80.7
+  24594 ms | Pa: 6650041.00 | °C: 29.92 | ΔPa: -63507.0000 | Freq: 0.20 Hz | dB: 80.7
+  25601 ms | Pa: 6650166.00 | °C: 29.93 | ΔPa: -63382.0000 | Freq: 0.20 Hz | dB: 80.7
+  26609 ms | Pa: 6650279.00 | °C: 29.94 | ΔPa: -63269.0000 | Freq: 0.20 Hz | dB: 80.7
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #2
+║  主频率:     0.20 Hz
+║  RMS 幅值:   10350.9893 Pa
+║  等效声压级: 80.3 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  27612 ms | Pa: 6650383.50 | °C: 29.94 | ΔPa: -63164.5000 | Freq: 0.20 Hz | dB: 80.3
+  28620 ms | Pa: 6650473.50 | °C: 29.95 | ΔPa: -63074.5000 | Freq: 0.20 Hz | dB: 80.3
+  29627 ms | Pa: 6650582.50 | °C: 29.96 | ΔPa: -62965.5000 | Freq: 0.20 Hz | dB: 80.3
+  30635 ms | Pa: 6650688.00 | °C: 29.96 | ΔPa: -62860.0000 | Freq: 0.20 Hz | dB: 80.3
+  31642 ms | Pa: 6650784.00 | °C: 29.97 | ΔPa: -62764.0000 | Freq: 0.20 Hz | dB: 80.3
+  32650 ms | Pa: 6650875.00 | °C: 29.98 | ΔPa: -62673.0000 | Freq: 0.20 Hz | dB: 80.3
+  33657 ms | Pa: 6650919.00 | °C: 29.98 | ΔPa: -62629.0000 | Freq: 0.20 Hz | dB: 80.3
+  34665 ms | Pa: 6650944.00 | °C: 29.98 | ΔPa: -62604.0000 | Freq: 0.20 Hz | dB: 80.3
+  35673 ms | Pa: 6650958.50 | °C: 29.98 | ΔPa: -62589.5000 | Freq: 0.20 Hz | dB: 80.3
+  36680 ms | Pa: 6650988.50 | °C: 29.98 | ΔPa: -62559.5000 | Freq: 0.20 Hz | dB: 80.3
+  37687 ms | Pa: 6651025.00 | °C: 29.99 | ΔPa: -62523.0000 | Freq: 0.20 Hz | dB: 80.3
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #3
+║  主频率:     0.20 Hz
+║  RMS 幅值:   10192.2822 Pa
+║  等效声压级: 80.2 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  38690 ms | Pa: 6651061.00 | °C: 29.99 | ΔPa: -62487.0000 | Freq: 0.20 Hz | dB: 80.2
+  39697 ms | Pa: 6651107.00 | °C: 29.99 | ΔPa: -62441.0000 | Freq: 0.20 Hz | dB: 80.2
+  40705 ms | Pa: 6651158.00 | °C: 29.99 | ΔPa: -62390.0000 | Freq: 0.20 Hz | dB: 80.2
+  41712 ms | Pa: 6651200.50 | °C: 30.00 | ΔPa: -62347.5000 | Freq: 0.20 Hz | dB: 80.2
+  42720 ms | Pa: 6651247.50 | °C: 30.00 | ΔPa: -62300.5000 | Freq: 0.20 Hz | dB: 80.2
+  43727 ms | Pa: 6651289.50 | °C: 30.00 | ΔPa: -62258.5000 | Freq: 0.20 Hz | dB: 80.2
+  44735 ms | Pa: 6651343.00 | °C: 30.01 | ΔPa: -62205.0000 | Freq: 0.20 Hz | dB: 80.2
+  45742 ms | Pa: 6651391.50 | °C: 30.01 | ΔPa: -62156.5000 | Freq: 0.20 Hz | dB: 80.2
+  46749 ms | Pa: 6651444.00 | °C: 30.01 | ΔPa: -62104.0000 | Freq: 0.20 Hz | dB: 80.2
+  47757 ms | Pa: 6651494.00 | °C: 30.01 | ΔPa: -62054.0000 | Freq: 0.20 Hz | dB: 80.2
+  48764 ms | Pa: 6651531.50 | °C: 30.02 | ΔPa: -62016.5000 | Freq: 0.20 Hz | dB: 80.2
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #4
+║  主频率:     0.20 Hz
+║  RMS 幅值:   10127.2070 Pa
+║  等效声压级: 80.1 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  49767 ms | Pa: 6651574.50 | °C: 30.02 | ΔPa: -61973.5000 | Freq: 0.20 Hz | dB: 80.1
+  50774 ms | Pa: 6651615.00 | °C: 30.02 | ΔPa: -61933.0000 | Freq: 0.20 Hz | dB: 80.1
+  51781 ms | Pa: 6651649.00 | °C: 30.02 | ΔPa: -61899.0000 | Freq: 0.20 Hz | dB: 80.1
+  52788 ms | Pa: 6651675.50 | °C: 30.03 | ΔPa: -61872.5000 | Freq: 0.20 Hz | dB: 80.1
+  53796 ms | Pa: 6651689.00 | °C: 30.03 | ΔPa: -61859.0000 | Freq: 0.20 Hz | dB: 80.1
+  54803 ms | Pa: 6651706.00 | °C: 30.03 | ΔPa: -61842.0000 | Freq: 0.20 Hz | dB: 80.1
+  55810 ms | Pa: 6651724.00 | °C: 30.03 | ΔPa: -61824.0000 | Freq: 0.20 Hz | dB: 80.1
+  56818 ms | Pa: 6651748.00 | °C: 30.03 | ΔPa: -61800.0000 | Freq: 0.20 Hz | dB: 80.1
+  57825 ms | Pa: 6651766.00 | °C: 30.03 | ΔPa: -61782.0000 | Freq: 0.20 Hz | dB: 80.1
+  58833 ms | Pa: 6651768.50 | °C: 30.03 | ΔPa: -61779.5000 | Freq: 0.20 Hz | dB: 80.1
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #5
+║  主频率:     0.20 Hz
+║  RMS 幅值:   10056.6670 Pa
+║  等效声压级: 80.0 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  59836 ms | Pa: 6651750.50 | °C: 30.03 | ΔPa: -61797.5000 | Freq: 0.20 Hz | dB: 80.0
+  60843 ms | Pa: 6651719.00 | °C: 30.03 | ΔPa: -61829.0000 | Freq: 0.20 Hz | dB: 80.0
+  61851 ms | Pa: 6651700.50 | °C: 30.03 | ΔPa: -61847.5000 | Freq: 0.20 Hz | dB: 80.0
+  62858 ms | Pa: 6651685.00 | °C: 30.03 | ΔPa: -61863.0000 | Freq: 0.20 Hz | dB: 80.0
+  63865 ms | Pa: 6651674.00 | °C: 30.03 | ΔPa: -61874.0000 | Freq: 0.20 Hz | dB: 80.0
+  64872 ms | Pa: 6651675.00 | °C: 30.03 | ΔPa: -61873.0000 | Freq: 0.20 Hz | dB: 80.0
+  65880 ms | Pa: 6651678.50 | °C: 30.03 | ΔPa: -61869.5000 | Freq: 0.20 Hz | dB: 80.0
+  66887 ms | Pa: 6651690.00 | °C: 30.03 | ΔPa: -61858.0000 | Freq: 0.20 Hz | dB: 80.0
+  67894 ms | Pa: 6651699.00 | °C: 30.03 | ΔPa: -61849.0000 | Freq: 0.20 Hz | dB: 80.0
+  68902 ms | Pa: 6651713.50 | °C: 30.03 | ΔPa: -61834.5000 | Freq: 0.20 Hz | dB: 80.0
+  69909 ms | Pa: 6651734.00 | °C: 30.03 | ΔPa: -61814.0000 | Freq: 0.20 Hz | dB: 80.0
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #6
+║  主频率:     0.20 Hz
+║  RMS 幅值:   10061.6338 Pa
+║  等效声压级: 80.1 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  70912 ms | Pa: 6651754.00 | °C: 30.03 | ΔPa: -61794.0000 | Freq: 0.20 Hz | dB: 80.1
+  71919 ms | Pa: 6651769.00 | °C: 30.03 | ΔPa: -61779.0000 | Freq: 0.20 Hz | dB: 80.1
+  72926 ms | Pa: 6651796.50 | °C: 30.03 | ΔPa: -61751.5000 | Freq: 0.20 Hz | dB: 80.1
+  73933 ms | Pa: 6651817.00 | °C: 30.04 | ΔPa: -61731.0000 | Freq: 0.20 Hz | dB: 80.1
+  74940 ms | Pa: 6651838.50 | °C: 30.04 | ΔPa: -61709.5000 | Freq: 0.20 Hz | dB: 80.1
+  75947 ms | Pa: 6651832.00 | °C: 30.04 | ΔPa: -61716.0000 | Freq: 0.20 Hz | dB: 80.1
+  76955 ms | Pa: 6651776.50 | °C: 30.03 | ΔPa: -61771.5000 | Freq: 0.20 Hz | dB: 80.1
+  77962 ms | Pa: 6651720.00 | °C: 30.03 | ΔPa: -61828.0000 | Freq: 0.20 Hz | dB: 80.1
+  78969 ms | Pa: 6651687.00 | °C: 30.03 | ΔPa: -61861.0000 | Freq: 0.20 Hz | dB: 80.1
+  79976 ms | Pa: 6651671.00 | °C: 30.03 | ΔPa: -61877.0000 | Freq: 0.20 Hz | dB: 80.1
+  80983 ms | Pa: 6651662.00 | °C: 30.03 | ΔPa: -61886.0000 | Freq: 0.20 Hz | dB: 80.1
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #7
+║  主频率:     0.20 Hz
+║  RMS 幅值:   10033.7383 Pa
+║  等效声压级: 80.0 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  81986 ms | Pa: 6651656.50 | °C: 30.03 | ΔPa: -61891.5000 | Freq: 0.20 Hz | dB: 80.0
+  82993 ms | Pa: 6651668.00 | °C: 30.03 | ΔPa: -61880.0000 | Freq: 0.20 Hz | dB: 80.0
+  84000 ms | Pa: 6651675.00 | °C: 30.03 | ΔPa: -61873.0000 | Freq: 0.20 Hz | dB: 80.0
+  85008 ms | Pa: 6651690.50 | °C: 30.03 | ΔPa: -61857.5000 | Freq: 0.20 Hz | dB: 80.0
+  86015 ms | Pa: 6651700.50 | °C: 30.03 | ΔPa: -61847.5000 | Freq: 0.20 Hz | dB: 80.0
+  87022 ms | Pa: 6651708.00 | °C: 30.03 | ΔPa: -61840.0000 | Freq: 0.20 Hz | dB: 80.0
+  88029 ms | Pa: 6651720.00 | °C: 30.03 | ΔPa: -61828.0000 | Freq: 0.20 Hz | dB: 80.0
+  89036 ms | Pa: 6651711.50 | °C: 30.03 | ΔPa: -61836.5000 | Freq: 0.20 Hz | dB: 80.0
+  90044 ms | Pa: 6651706.00 | °C: 30.03 | ΔPa: -61842.0000 | Freq: 0.20 Hz | dB: 80.0
+  91051 ms | Pa: 6651713.50 | °C: 30.03 | ΔPa: -61834.5000 | Freq: 0.20 Hz | dB: 80.0
+[ 91155][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91162][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91170][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91177][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91219][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91227][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91235][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91242][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91677][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91685][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91693][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91700][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91707][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91715][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91722][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91729][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91737][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91744][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91751][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91759][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91766][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91774][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91781][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91788][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91796][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91803][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91810][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91818][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91825][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91833][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91840][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91847][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91855][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91862][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91869][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 91877][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+  92056 ms | Pa: 6651677.50 | °C: 30.03 | ΔPa: -61870.5000 | Freq: 0.20 Hz | dB: 80.0
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #8
+║  主频率:     0.20 Hz
+║  RMS 幅值:   10055.1602 Pa
+║  等效声压级: 80.0 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  93057 ms | Pa: 6651701.00 | °C: 30.03 | ΔPa: -61847.0000 | Freq: 0.20 Hz | dB: 80.0
+[ 93474][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93482][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93498][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93506][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93513][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93520][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93528][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93535][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93542][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93550][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93557][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93564][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93572][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93579][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93587][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93594][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93601][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93609][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93616][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93623][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93631][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93638][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93645][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93653][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93660][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93668][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93675][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93682][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93690][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93697][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93704][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93712][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93719][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93727][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93734][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93742][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93749][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93756][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93764][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93771][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93778][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93786][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93793][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93800][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93808][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93815][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93823][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93830][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93837][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93845][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93852][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93859][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93867][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93874][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93882][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93889][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93896][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93904][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93911][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93918][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93926][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93933][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93940][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93948][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93955][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93963][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93970][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93977][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93985][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93992][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 93999][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94007][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94014][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94021][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94029][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94036][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94044][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94051][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94058][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94066][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94073][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94080][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94088][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94095][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94103][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94110][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94117][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94125][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94132][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94139][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+  94151 ms | Pa: 6651729.00 | °C: 30.03 | ΔPa: -61819.0000 | Freq: 0.20 Hz | dB: 80.0
+[ 94391][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 94524][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+  95161 ms | Pa: 6651586.00 | °C: 30.02 | ΔPa: -61962.0000 | Freq: 0.20 Hz | dB: 80.0
+  96169 ms | Pa: 6651495.00 | °C: 30.02 | ΔPa: -62053.0000 | Freq: 0.20 Hz | dB: 80.0
+  97175 ms | Pa: 6651405.50 | °C: 30.01 | ΔPa: -62142.5000 | Freq: 0.20 Hz | dB: 80.0
+  98181 ms | Pa: 6651365.00 | °C: 30.01 | ΔPa: -62183.0000 | Freq: 0.20 Hz | dB: 80.0
+  99186 ms | Pa: 6651334.50 | °C: 30.01 | ΔPa: -62213.5000 | Freq: 0.20 Hz | dB: 80.0
+  100191 ms | Pa: 6651301.00 | °C: 30.00 | ΔPa: -62247.0000 | Freq: 0.20 Hz | dB: 80.0
+  101196 ms | Pa: 6651248.50 | °C: 30.00 | ΔPa: -62299.5000 | Freq: 0.20 Hz | dB: 80.0
+  102201 ms | Pa: 6651200.50 | °C: 30.00 | ΔPa: -62347.5000 | Freq: 0.20 Hz | dB: 80.0
+  103206 ms | Pa: 6651153.50 | °C: 29.99 | ΔPa: -62394.5000 | Freq: 0.20 Hz | dB: 80.0
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #9
+║  主频率:     0.20 Hz
+║  RMS 幅值:   10111.8145 Pa
+║  等效声压级: 80.1 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  104207 ms | Pa: 6651102.00 | °C: 29.99 | ΔPa: -62446.0000 | Freq: 0.20 Hz | dB: 80.1
+  105212 ms | Pa: 6651055.50 | °C: 29.99 | ΔPa: -62492.5000 | Freq: 0.20 Hz | dB: 80.1
+  106218 ms | Pa: 6651006.50 | °C: 29.99 | ΔPa: -62541.5000 | Freq: 0.20 Hz | dB: 80.1
+  107223 ms | Pa: 6650949.00 | °C: 29.98 | ΔPa: -62599.0000 | Freq: 0.20 Hz | dB: 80.1
+  108228 ms | Pa: 6650880.50 | °C: 29.98 | ΔPa: -62667.5000 | Freq: 0.20 Hz | dB: 80.1
+  109233 ms | Pa: 6650797.00 | °C: 29.97 | ΔPa: -62751.0000 | Freq: 0.20 Hz | dB: 80.1
+  110238 ms | Pa: 6650717.50 | °C: 29.97 | ΔPa: -62830.5000 | Freq: 0.20 Hz | dB: 80.1
+  111243 ms | Pa: 6650613.50 | °C: 29.96 | ΔPa: -62934.5000 | Freq: 0.20 Hz | dB: 80.1
+  112248 ms | Pa: 6650501.00 | °C: 29.95 | ΔPa: -63047.0000 | Freq: 0.20 Hz | dB: 80.1
+  113253 ms | Pa: 6650370.50 | °C: 29.95 | ΔPa: -63177.5000 | Freq: 0.20 Hz | dB: 80.1
+  114259 ms | Pa: 6650259.50 | °C: 29.94 | ΔPa: -63288.5000 | Freq: 0.20 Hz | dB: 80.1
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #10
+║  主频率:     0.20 Hz
+║  RMS 幅值:   10196.5029 Pa
+║  等效声压级: 80.2 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  115260 ms | Pa: 6650159.50 | °C: 29.93 | ΔPa: -63388.5000 | Freq: 0.20 Hz | dB: 80.2
+  116265 ms | Pa: 6650044.50 | °C: 29.93 | ΔPa: -63503.5000 | Freq: 0.20 Hz | dB: 80.2
+  117270 ms | Pa: 6649946.00 | °C: 29.92 | ΔPa: -63602.0000 | Freq: 0.20 Hz | dB: 80.2
+  118275 ms | Pa: 6649841.50 | °C: 29.91 | ΔPa: -63706.5000 | Freq: 0.20 Hz | dB: 80.2
+  119280 ms | Pa: 6649734.50 | °C: 29.91 | ΔPa: -63813.5000 | Freq: 0.20 Hz | dB: 80.2
+  120285 ms | Pa: 6649625.50 | °C: 29.90 | ΔPa: -63922.5000 | Freq: 0.20 Hz | dB: 80.2
+  121290 ms | Pa: 6649503.50 | °C: 29.89 | ΔPa: -64044.5000 | Freq: 0.20 Hz | dB: 80.2
+  122295 ms | Pa: 6649392.50 | °C: 29.89 | ΔPa: -64155.5000 | Freq: 0.20 Hz | dB: 80.2
+  123301 ms | Pa: 6649272.00 | °C: 29.88 | ΔPa: -64276.0000 | Freq: 0.20 Hz | dB: 80.2
+  124306 ms | Pa: 6649161.00 | °C: 29.87 | ΔPa: -64387.0000 | Freq: 0.20 Hz | dB: 80.2
+  125311 ms | Pa: 6649062.00 | °C: 29.86 | ΔPa: -64486.0000 | Freq: 0.20 Hz | dB: 80.2
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #11
+║  主频率:     0.20 Hz
+║  RMS 幅值:   10383.4795 Pa
+║  等效声压级: 80.3 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  126312 ms | Pa: 6648956.50 | °C: 29.86 | ΔPa: -64591.5000 | Freq: 0.20 Hz | dB: 80.3
+  127317 ms | Pa: 6648855.00 | °C: 29.85 | ΔPa: -64693.0000 | Freq: 0.20 Hz | dB: 80.3
+  128322 ms | Pa: 6648747.00 | °C: 29.84 | ΔPa: -64801.0000 | Freq: 0.20 Hz | dB: 80.3
+  129327 ms | Pa: 6648639.50 | °C: 29.84 | ΔPa: -64908.5000 | Freq: 0.20 Hz | dB: 80.3
+  130332 ms | Pa: 6648531.50 | °C: 29.83 | ΔPa: -65016.5000 | Freq: 0.20 Hz | dB: 80.3
+  131337 ms | Pa: 6648442.50 | °C: 29.83 | ΔPa: -65105.5000 | Freq: 0.20 Hz | dB: 80.3
+  132343 ms | Pa: 6648367.50 | °C: 29.82 | ΔPa: -65180.5000 | Freq: 0.20 Hz | dB: 80.3
+  133348 ms | Pa: 6648295.50 | °C: 29.82 | ΔPa: -65252.5000 | Freq: 0.20 Hz | dB: 80.3
+  134353 ms | Pa: 6648221.50 | °C: 29.81 | ΔPa: -65326.5000 | Freq: 0.20 Hz | dB: 80.3
+  135358 ms | Pa: 6648132.50 | °C: 29.81 | ΔPa: -65415.5000 | Freq: 0.20 Hz | dB: 80.3
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #12
+║  主频率:     0.20 Hz
+║  RMS 幅值:   10574.5791 Pa
+║  等效声压级: 80.5 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  136359 ms | Pa: 6648030.00 | °C: 29.80 | ΔPa: -65518.0000 | Freq: 0.20 Hz | dB: 80.5
+  137364 ms | Pa: 6647924.00 | °C: 29.79 | ΔPa: -65624.0000 | Freq: 0.20 Hz | dB: 80.5
+  138369 ms | Pa: 6647839.00 | °C: 29.79 | ΔPa: -65709.0000 | Freq: 0.20 Hz | dB: 80.5
+  139374 ms | Pa: 6647746.50 | °C: 29.78 | ΔPa: -65801.5000 | Freq: 0.20 Hz | dB: 80.5
+  140379 ms | Pa: 6647657.00 | °C: 29.78 | ΔPa: -65891.0000 | Freq: 0.20 Hz | dB: 80.5
+  141384 ms | Pa: 6647550.50 | °C: 29.77 | ΔPa: -65997.5000 | Freq: 0.20 Hz | dB: 80.5
+  142389 ms | Pa: 6647457.00 | °C: 29.76 | ΔPa: -66091.0000 | Freq: 0.20 Hz | dB: 80.5
+  143395 ms | Pa: 6647359.00 | °C: 29.76 | ΔPa: -66189.0000 | Freq: 0.20 Hz | dB: 80.5
+  144400 ms | Pa: 6647267.00 | °C: 29.75 | ΔPa: -66281.0000 | Freq: 0.20 Hz | dB: 80.5
+  145405 ms | Pa: 6647195.00 | °C: 29.75 | ΔPa: -66353.0000 | Freq: 0.20 Hz | dB: 80.5
+  146410 ms | Pa: 6647097.50 | °C: 29.74 | ΔPa: -66450.5000 | Freq: 0.20 Hz | dB: 80.5
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #13
+║  主频率:     0.20 Hz
+║  RMS 幅值:   10728.9023 Pa
+║  等效声压级: 80.6 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  147411 ms | Pa: 6646983.00 | °C: 29.73 | ΔPa: -66565.0000 | Freq: 0.20 Hz | dB: 80.6
+  148416 ms | Pa: 6646886.50 | °C: 29.73 | ΔPa: -66661.5000 | Freq: 0.20 Hz | dB: 80.6
+  149421 ms | Pa: 6646798.00 | °C: 29.72 | ΔPa: -66750.0000 | Freq: 0.20 Hz | dB: 80.6
+  150426 ms | Pa: 6646725.50 | °C: 29.72 | ΔPa: -66822.5000 | Freq: 0.20 Hz | dB: 80.6
+  151431 ms | Pa: 6646663.00 | °C: 29.71 | ΔPa: -66885.0000 | Freq: 0.20 Hz | dB: 80.6
+  152436 ms | Pa: 6646618.50 | °C: 29.71 | ΔPa: -66929.5000 | Freq: 0.20 Hz | dB: 80.6
+  153441 ms | Pa: 6646583.00 | °C: 29.71 | ΔPa: -66965.0000 | Freq: 0.20 Hz | dB: 80.6
+  154447 ms | Pa: 6646541.50 | °C: 29.71 | ΔPa: -67006.5000 | Freq: 0.20 Hz | dB: 80.6
+  155452 ms | Pa: 6646506.50 | °C: 29.70 | ΔPa: -67041.5000 | Freq: 0.20 Hz | dB: 80.6
+  156457 ms | Pa: 6646460.50 | °C: 29.70 | ΔPa: -67087.5000 | Freq: 0.20 Hz | dB: 80.6
+  157462 ms | Pa: 6646415.50 | °C: 29.70 | ΔPa: -67132.5000 | Freq: 0.20 Hz | dB: 80.6
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #14
+║  主频率:     0.20 Hz
+║  RMS 幅值:   10881.4727 Pa
+║  等效声压级: 80.7 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  158463 ms | Pa: 6646377.50 | °C: 29.69 | ΔPa: -67170.5000 | Freq: 0.20 Hz | dB: 80.7
+  159468 ms | Pa: 6646332.50 | °C: 29.69 | ΔPa: -67215.5000 | Freq: 0.20 Hz | dB: 80.7
+  160473 ms | Pa: 6646314.50 | °C: 29.69 | ΔPa: -67233.5000 | Freq: 0.20 Hz | dB: 80.7
+  161478 ms | Pa: 6646307.00 | °C: 29.69 | ΔPa: -67241.0000 | Freq: 0.20 Hz | dB: 80.7
+  162483 ms | Pa: 6646294.00 | °C: 29.69 | ΔPa: -67254.0000 | Freq: 0.20 Hz | dB: 80.7
+  163488 ms | Pa: 6646284.00 | °C: 29.69 | ΔPa: -67264.0000 | Freq: 0.20 Hz | dB: 80.7
+  164493 ms | Pa: 6646254.50 | °C: 29.69 | ΔPa: -67293.5000 | Freq: 0.20 Hz | dB: 80.7
+  165499 ms | Pa: 6646206.00 | °C: 29.68 | ΔPa: -67342.0000 | Freq: 0.20 Hz | dB: 80.7
+  166504 ms | Pa: 6646154.00 | °C: 29.68 | ΔPa: -67394.0000 | Freq: 0.20 Hz | dB: 80.7
+  167509 ms | Pa: 6646096.00 | °C: 29.68 | ΔPa: -67452.0000 | Freq: 0.20 Hz | dB: 80.7
+  168514 ms | Pa: 6646036.50 | °C: 29.67 | ΔPa: -67511.5000 | Freq: 0.20 Hz | dB: 80.7
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #15
+║  主频率:     0.20 Hz
+║  RMS 幅值:   10934.6475 Pa
+║  等效声压级: 80.8 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  169515 ms | Pa: 6645975.00 | °C: 29.67 | ΔPa: -67573.0000 | Freq: 0.20 Hz | dB: 80.8
+  170520 ms | Pa: 6645919.00 | °C: 29.67 | ΔPa: -67629.0000 | Freq: 0.20 Hz | dB: 80.8
+  171525 ms | Pa: 6645879.50 | °C: 29.66 | ΔPa: -67668.5000 | Freq: 0.20 Hz | dB: 80.8
+  172530 ms | Pa: 6645845.00 | °C: 29.66 | ΔPa: -67703.0000 | Freq: 0.20 Hz | dB: 80.8
+  173535 ms | Pa: 6645794.00 | °C: 29.66 | ΔPa: -67754.0000 | Freq: 0.20 Hz | dB: 80.8
+  174540 ms | Pa: 6645730.00 | °C: 29.65 | ΔPa: -67818.0000 | Freq: 0.20 Hz | dB: 80.8
+  175545 ms | Pa: 6645674.00 | °C: 29.65 | ΔPa: -67874.0000 | Freq: 0.20 Hz | dB: 80.8
+  176550 ms | Pa: 6645604.50 | °C: 29.65 | ΔPa: -67943.5000 | Freq: 0.20 Hz | dB: 80.8
+  177556 ms | Pa: 6645533.00 | °C: 29.64 | ΔPa: -68015.0000 | Freq: 0.20 Hz | dB: 80.8
+  178561 ms | Pa: 6645422.50 | °C: 29.63 | ΔPa: -68125.5000 | Freq: 0.20 Hz | dB: 80.8
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #16
+║  主频率:     0.20 Hz
+║  RMS 幅值:   11016.7793 Pa
+║  等效声压级: 80.8 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  179561 ms | Pa: 6645289.00 | °C: 29.63 | ΔPa: -68259.0000 | Freq: 0.20 Hz | dB: 80.8
+  180567 ms | Pa: 6645142.50 | °C: 29.62 | ΔPa: -68405.5000 | Freq: 0.20 Hz | dB: 80.8
+  181572 ms | Pa: 6645030.00 | °C: 29.61 | ΔPa: -68518.0000 | Freq: 0.20 Hz | dB: 80.8
+  182577 ms | Pa: 6644939.50 | °C: 29.60 | ΔPa: -68608.5000 | Freq: 0.20 Hz | dB: 80.8
+  183582 ms | Pa: 6644850.00 | °C: 29.60 | ΔPa: -68698.0000 | Freq: 0.20 Hz | dB: 80.8
+  184587 ms | Pa: 6644775.00 | °C: 29.59 | ΔPa: -68773.0000 | Freq: 0.20 Hz | dB: 80.8
+  185592 ms | Pa: 6644720.00 | °C: 29.59 | ΔPa: -68828.0000 | Freq: 0.20 Hz | dB: 80.8
+  186597 ms | Pa: 6644662.50 | °C: 29.59 | ΔPa: -68885.5000 | Freq: 0.20 Hz | dB: 80.8
+  187602 ms | Pa: 6644613.00 | °C: 29.58 | ΔPa: -68935.0000 | Freq: 0.20 Hz | dB: 80.8
+  188608 ms | Pa: 6644565.00 | °C: 29.58 | ΔPa: -68983.0000 | Freq: 0.20 Hz | dB: 80.8
+  189613 ms | Pa: 6644520.00 | °C: 29.58 | ΔPa: -69028.0000 | Freq: 0.20 Hz | dB: 80.8
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #17
+║  主频率:     0.20 Hz
+║  RMS 幅值:   11181.8008 Pa
+║  等效声压级: 81.0 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  190613 ms | Pa: 6644478.00 | °C: 29.58 | ΔPa: -69070.0000 | Freq: 0.20 Hz | dB: 81.0
+  191619 ms | Pa: 6644445.50 | °C: 29.57 | ΔPa: -69102.5000 | Freq: 0.20 Hz | dB: 81.0
+  192624 ms | Pa: 6644395.00 | °C: 29.57 | ΔPa: -69153.0000 | Freq: 0.20 Hz | dB: 81.0
+  193629 ms | Pa: 6644322.00 | °C: 29.57 | ΔPa: -69226.0000 | Freq: 0.20 Hz | dB: 81.0
+  194634 ms | Pa: 6644221.00 | °C: 29.56 | ΔPa: -69327.0000 | Freq: 0.20 Hz | dB: 81.0
+  195639 ms | Pa: 6644115.50 | °C: 29.55 | ΔPa: -69432.5000 | Freq: 0.20 Hz | dB: 81.0
+  196644 ms | Pa: 6644007.50 | °C: 29.55 | ΔPa: -69540.5000 | Freq: 0.20 Hz | dB: 81.0
+  197649 ms | Pa: 6643929.00 | °C: 29.54 | ΔPa: -69619.0000 | Freq: 0.20 Hz | dB: 81.0
+  198655 ms | Pa: 6643876.00 | °C: 29.54 | ΔPa: -69672.0000 | Freq: 0.20 Hz | dB: 81.0
+  199660 ms | Pa: 6643825.50 | °C: 29.53 | ΔPa: -69722.5000 | Freq: 0.20 Hz | dB: 81.0
+  200665 ms | Pa: 6643764.50 | °C: 29.53 | ΔPa: -69783.5000 | Freq: 0.20 Hz | dB: 81.0
+
+╔══════════ DMP390 FFT 分析报告 ═══════════╗
+║  报告: #18
+║  主频率:     0.20 Hz
+║  RMS 幅值:   11282.0762 Pa
+║  等效声压级: 81.0 dB
+║  风险等级:   🔵 注意
+╚══════════════════════════════════════════╝
+
+  201666 ms | Pa: 6643716.00 | °C: 29.53 | ΔPa: -69832.0000 | Freq: 0.20 Hz | dB: 81.0
+  202671 ms | Pa: 6643678.50 | °C: 29.53 | ΔPa: -69869.5000 | Freq: 0.20 Hz | dB: 81.0
+  203676 ms | Pa: 6643639.00 | °C: 29.52 | ΔPa: -69909.0000 | Freq: 0.20 Hz | dB: 81.0
+  204681 ms | Pa: 6643598.50 | °C: 29.52 | ΔPa: -69949.5000 | Freq: 0.20 Hz | dB: 81.0
+  205686 ms | Pa: 6643568.00 | °C: 29.52 | ΔPa: -69980.0000 | Freq: 0.20 Hz | dB: 81.0
+  206691 ms | Pa: 6643525.00 | °C: 29.52 | ΔPa: -70023.0000 | Freq: 0.20 Hz | dB: 81.0
+  207696 ms | Pa: 6643486.50 | °C: 29.51 | ΔPa: -70061.5000 | Freq: 0.20 Hz | dB: 81.0
+  208702 ms | Pa: 6643429.00 | °C: 29.51 | ΔPa: -70119.0000 | Freq: 0.20 Hz | dB: 81.0
+  209707 ms | Pa: 6643375.50 | °C: 29.51 | ΔPa: -70172.5000 | Freq: 0.20 Hz | dB: 81.0
+  210712 ms | Pa: 6643321.50 | °C: 29.50 | ΔPa: -70226.5000 | Freq: 0.20 Hz | dB: 81.0

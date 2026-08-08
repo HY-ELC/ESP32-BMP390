@@ -1,0 +1,223 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+
+
+╔══════════════════════════════════════════╗
+║   DMP390(BMP390) 次声波检测系统 v3.0   ║
+╠══════════════════════════════════════════╣
+║  MCU:    ESP32 Dev Module               ║
+║  传感器: BMP390 (DMP390兼容)            ║
+║  BMP390: SDA=GPIO21, SCL=GPIO22         ║
+║  OLED:   SDA=GPIO18, SCL=GPIO19         ║
+║  采样率: 200 Hz                          ║
+║  FFT:    256点, Hamming窗, 1.28s刷新    ║
+║  滤波:   5点MA低通 + 窗内去均值(DC去除) ║
+║  LED:    GPIO2 (板载蓝色LED)             ║
+╚══════════════════════════════════════════╝
+
+[BOOT] ESP32 Chip: ESP32-D0WD-V3
+[BOOT] CPU Freq:   240 MHz
+[BOOT] Flash Size: 4 MB
+[BOOT] Free Heap:  335 KB
+
+═══════════ DMP390 传感器初始化 ═══════════
+[DMP390] ─── BMP390 初始化 (Wire, GPIO21/22) ───
+[DMP390] 尝试地址 0x77... 成功!
+[BMP390] bmp.pressure=83483.41
+[BMP390] 单位=Pa
+[DMP390] 基线校准... 66371.70 Pa
+[INIT] FIR滤波器... OK
+[INIT] FFT处理模块... OK
+[INIT] OLED显示屏... OK
+
+═══════════ 系统启动完成 ═══════════
+状态: 🟢 正常运行模式
+═══════════ DMP390 实时数据流 ═══════════
+  时间(ms)  |  气压(Pa)  |  温度(°C)  |  压差(Pa)  |  频率(Hz)  |  dB SPL
+----------------------------------------------------------------------------
+  [5442ms] P=66378.63Pa BL=66371.70Pa T=29.16°C | ΔP=6.930Pa FIR=6.930Pa | f=-1.00Hz dB=-999.0
+  [6451ms] P=66382.70Pa BL=66371.70Pa T=29.19°C | ΔP=11.000Pa FIR=10.887Pa | f=-1.00Hz dB=-999.0
+[DIAG] winMean=8.27Pa RMS=2.997Pa dB=103.5 dB
+[SPECTRUM] peakBin=5 freq=3.91Hz peakMag=5.1 | bins 3-12: 1.76 4.98 5.11 4.12 3.97 3.56 3.52 3.05 2.97 2.82
+  [7461ms] P=66386.53Pa BL=66371.70Pa T=29.21°C | ΔP=14.836Pa FIR=14.617Pa | f=3.91Hz dB=103.5
+  [8469ms] P=66389.89Pa BL=66371.70Pa T=29.23°C | ΔP=18.195Pa FIR=18.195Pa | f=3.91Hz dB=103.5
+  [9478ms] P=66393.30Pa BL=66371.70Pa T=29.26°C | ΔP=21.602Pa FIR=21.556Pa | f=3.91Hz dB=103.5
+  [10485ms] P=66396.52Pa BL=66371.70Pa T=29.27°C | ΔP=24.828Pa FIR=24.697Pa | f=3.12Hz dB=102.5
+  [11493ms] P=66399.19Pa BL=66371.70Pa T=29.29°C | ΔP=27.492Pa FIR=27.492Pa | f=3.12Hz dB=102.5
+  [12502ms] P=66401.82Pa BL=66371.70Pa T=29.31°C | ΔP=30.125Pa FIR=30.125Pa | f=3.12Hz dB=102.5
+  [13504ms] P=66403.88Pa BL=66371.70Pa T=29.32°C | ΔP=32.180Pa FIR=32.100Pa | f=3.12Hz dB=100.6
+  [14512ms] P=66405.48Pa BL=66371.70Pa T=29.33°C | ΔP=33.789Pa FIR=33.789Pa | f=3.12Hz dB=100.6
+  [15519ms] P=66406.87Pa BL=66371.70Pa T=29.34°C | ΔP=35.172Pa FIR=35.172Pa | f=3.12Hz dB=96.5
+  [16528ms] P=66407.91Pa BL=66371.70Pa T=29.34°C | ΔP=36.219Pa FIR=36.191Pa | f=3.12Hz dB=96.5
+  [17537ms] P=66408.77Pa BL=66371.70Pa T=29.35°C | ΔP=37.070Pa FIR=37.027Pa | f=3.12Hz dB=96.5
+  [18544ms] P=66409.44Pa BL=66371.70Pa T=29.35°C | ΔP=37.742Pa FIR=37.742Pa | f=2.34Hz dB=91.1
+  [19553ms] P=66410.14Pa BL=66371.70Pa T=29.36°C | ΔP=38.445Pa FIR=38.436Pa | f=2.34Hz dB=91.1
+  [20561ms] P=66410.76Pa BL=66371.70Pa T=29.36°C | ΔP=39.063Pa FIR=39.025Pa | f=2.34Hz dB=91.1
+  [21563ms] P=66411.48Pa BL=66371.70Pa T=29.37°C | ΔP=39.781Pa FIR=39.781Pa | f=3.12Hz dB=88.1
+  [22572ms] P=66412.41Pa BL=66371.70Pa T=29.37°C | ΔP=40.711Pa FIR=40.700Pa | f=3.12Hz dB=88.1
+  [23579ms] P=66413.15Pa BL=66371.70Pa T=29.38°C | ΔP=41.453Pa FIR=41.425Pa | f=2.34Hz dB=90.5
+  [24588ms] P=66413.48Pa BL=66371.70Pa T=29.38°C | ΔP=41.781Pa FIR=41.781Pa | f=2.34Hz dB=90.5
+  [25596ms] P=66413.63Pa BL=66371.70Pa T=29.38°C | ΔP=41.938Pa FIR=41.938Pa | f=2.34Hz dB=90.5
+  [26603ms] P=66413.45Pa BL=66371.70Pa T=29.38°C | ΔP=41.750Pa FIR=41.753Pa | f=5.47Hz dB=79.7
+  [27612ms] P=66413.18Pa BL=66371.70Pa T=29.38°C | ΔP=41.484Pa FIR=41.516Pa | f=5.47Hz dB=79.7
+  [28621ms] P=66412.65Pa BL=66371.70Pa T=29.37°C | ΔP=40.953Pa FIR=40.953Pa | f=5.47Hz dB=79.7
+  [29623ms] P=66411.88Pa BL=66371.70Pa T=29.37°C | ΔP=40.180Pa FIR=40.202Pa | f=3.12Hz dB=82.5
+  [30632ms] P=66410.88Pa BL=66371.70Pa T=29.36°C | ΔP=39.188Pa FIR=39.263Pa | f=3.12Hz dB=82.5
+  [31639ms] P=66409.43Pa BL=66371.70Pa T=29.35°C | ΔP=37.734Pa FIR=37.734Pa | f=4.69Hz dB=91.9
+[ 32120][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[ 32262][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 32302][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[ 32318][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+  [32645ms] P=66365.28Pa BL=66371.70Pa T=29.08°C | ΔP=-6.414Pa FIR=-6.489Pa | f=4.69Hz dB=91.9
+[ 33734][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [33751ms] P=66366.72Pa BL=66371.70Pa T=29.09°C | ΔP=-4.977Pa FIR=-6.008Pa | f=4.69Hz dB=91.9
+[ 34746][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [34758ms] P=83483.41Pa BL=66371.70Pa T=24.07°C | ΔP=17111.711Pa FIR=3419.183Pa | f=4.69Hz dB=91.9
+[ 35820][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [35832ms] P=66785.54Pa BL=66371.70Pa T=31.72°C | ΔP=413.844Pa FIR=13772.137Pa | f=4.69Hz dB=91.9
+[DIAG] winMean=1020.54Pa RMS=3374.847Pa dB=164.5 dB
+[SPECTRUM] peakBin=4 freq=3.12Hz peakMag=120970.8 | bins 3-12: 47077.81 120970.80 49732.89 114142.22 52588.24 104713.69 54544.21 94117.49 55575.69 82064.66
+  [36841ms] P=66745.61Pa BL=66371.70Pa T=31.47°C | ΔP=373.914Pa FIR=373.914Pa | f=3.12Hz dB=164.5
+[ 37407][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37415][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37422][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37430][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37437][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37444][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37451][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37459][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37466][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37474][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37481][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37488][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37496][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37503][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37510][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37518][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37525][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37532][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37540][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37547][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37555][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37562][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37569][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37576][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37725][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37733][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37740][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37748][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37769][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37776][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37783][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37790][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37798][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37805][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37813][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37820][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37827][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37835][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37842][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37849][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37857][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37882][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[ 37890][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37897][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37905][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37912][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37919][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37926][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37934][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 37941][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+  [37953ms] P=66712.90Pa BL=66371.70Pa T=31.26°C | ΔP=341.203Pa FIR=344.977Pa | f=3.12Hz dB=164.5
+[ 38075][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38082][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38089][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38110][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38118][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38125][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38132][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38140][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38147][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38154][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38162][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38169][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38177][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38184][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38191][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38198][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38206][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38311][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38318][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38325][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38333][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 38340][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 39608][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [39625ms] P=66689.81Pa BL=66371.70Pa T=31.12°C | ΔP=318.117Pa FIR=320.548Pa | f=3.12Hz dB=164.5
+  [40634ms] P=66662.17Pa BL=66371.70Pa T=30.94°C | ΔP=290.477Pa FIR=290.477Pa | f=3.12Hz dB=164.5
+  [41642ms] P=66658.68Pa BL=66371.70Pa T=30.92°C | ΔP=286.984Pa FIR=287.191Pa | f=2.34Hz dB=124.0
+  [42646ms] P=66649.98Pa BL=66371.70Pa T=30.87°C | ΔP=278.281Pa FIR=278.794Pa | f=2.34Hz dB=124.0
+  [43653ms] P=66641.56Pa BL=66371.70Pa T=30.81°C | ΔP=269.867Pa FIR=269.867Pa | f=3.12Hz dB=108.6
+  [44662ms] P=66632.59Pa BL=66371.70Pa T=30.76°C | ΔP=260.898Pa FIR=261.025Pa | f=3.12Hz dB=108.6
+  [45671ms] P=66623.77Pa BL=66371.70Pa T=30.70°C | ΔP=252.078Pa FIR=252.462Pa | f=3.12Hz dB=108.6
+  [46679ms] P=66614.96Pa BL=66371.70Pa T=30.65°C | ΔP=243.266Pa FIR=243.266Pa | f=3.91Hz dB=110.5
+  [47687ms] P=66604.67Pa BL=66371.70Pa T=30.58°C | ΔP=232.977Pa FIR=232.977Pa | f=3.91Hz dB=110.5
+  [48696ms] P=66594.51Pa BL=66371.70Pa T=30.52°C | ΔP=222.812Pa FIR=223.106Pa | f=3.91Hz dB=110.5
+  [49698ms] P=66584.42Pa BL=66371.70Pa T=30.46°C | ΔP=212.727Pa FIR=212.727Pa | f=3.91Hz dB=111.7
+  [50707ms] P=66573.95Pa BL=66371.70Pa T=30.39°C | ΔP=202.258Pa FIR=202.258Pa | f=3.91Hz dB=111.7
+  [51715ms] P=66563.77Pa BL=66371.70Pa T=30.33°C | ΔP=192.078Pa FIR=192.369Pa | f=3.91Hz dB=112.0
+  [52724ms] P=66553.68Pa BL=66371.70Pa T=30.26°C | ΔP=181.984Pa FIR=182.547Pa | f=3.91Hz dB=112.0
+  [53732ms] P=66545.54Pa BL=66371.70Pa T=30.21°C | ΔP=173.844Pa FIR=173.844Pa | f=3.91Hz dB=112.0
+  [54741ms] P=66536.01Pa BL=66371.70Pa T=30.15°C | ΔP=164.312Pa FIR=164.452Pa | f=3.91Hz dB=111.0
+[ 55845][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [55857ms] P=66535.54Pa BL=66371.70Pa T=30.15°C | ΔP=163.844Pa FIR=163.638Pa | f=3.91Hz dB=111.0
+  [56866ms] P=66525.25Pa BL=66371.70Pa T=30.09°C | ΔP=153.555Pa FIR=153.555Pa | f=3.91Hz dB=111.0
+  [57874ms] P=66515.98Pa BL=66371.70Pa T=30.03°C | ΔP=144.289Pa FIR=144.542Pa | f=3.12Hz dB=111.5
+[ 58363][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 58371][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error -1
+[ 58672][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+[ 59685][E][Wire.cpp:499] requestFrom(): i2cWriteReadNonStop returned Error 263
+  [59697ms] P=83483.41Pa BL=66371.70Pa T=24.07°C | ΔP=17111.711Pa FIR=3532.738Pa | f=3.12Hz dB=111.5
+  [60706ms] P=66391.51Pa BL=66371.70Pa T=29.23°C | ΔP=19.812Pa FIR=19.812Pa | f=3.12Hz dB=111.5
+  [61708ms] P=66395.39Pa BL=66371.70Pa T=29.26°C | ΔP=23.695Pa FIR=23.592Pa | f=2.34Hz dB=161.7
+  [62717ms] P=66399.03Pa BL=66371.70Pa T=29.28°C | ΔP=27.336Pa FIR=27.142Pa | f=2.34Hz dB=161.7
+  [63725ms] P=66402.14Pa BL=66371.70Pa T=29.30°C | ΔP=30.445Pa FIR=30.445Pa | f=2.34Hz dB=161.7
+  [64732ms] P=66405.08Pa BL=66371.70Pa T=29.32°C | ΔP=33.383Pa FIR=33.341Pa | f=3.91Hz dB=102.2
+  [65741ms] P=66407.55Pa BL=66371.70Pa T=29.34°C | ΔP=35.852Pa FIR=35.739Pa | f=3.91Hz dB=102.2
+  [66749ms] P=66409.53Pa BL=66371.70Pa T=29.35°C | ΔP=37.836Pa FIR=37.836Pa | f=3.91Hz dB=102.2
+[DIAG] winMean=35.44Pa RMS=1.774Pa dB=99.0 dB
+[SPECTRUM] peakBin=5 freq=3.91Hz peakMag=3.4 | bins 3-12: 2.20 2.94 3.42 2.60 2.46 2.48 1.86 2.03 1.60 1.79
+  [67758ms] P=66411.38Pa BL=66371.70Pa T=29.36°C | ΔP=39.688Pa FIR=39.688Pa | f=3.91Hz dB=99.0
+  [68767ms] P=66412.91Pa BL=66371.70Pa T=29.37°C | ΔP=41.211Pa FIR=41.170Pa | f=3.91Hz dB=99.0
+  [69769ms] P=66414.11Pa BL=66371.70Pa T=29.38°C | ΔP=42.414Pa FIR=42.414Pa | f=3.12Hz dB=95.3
+  [70777ms] P=66415.06Pa BL=66371.70Pa T=29.39°C | ΔP=43.367Pa FIR=43.367Pa | f=3.12Hz dB=95.3
+  [71786ms] P=66415.85Pa BL=66371.70Pa T=29.39°C | ΔP=44.156Pa FIR=44.134Pa | f=3.12Hz dB=95.3
+  [72793ms] P=66416.48Pa BL=66371.70Pa T=29.39°C | ΔP=44.789Pa FIR=44.733Pa | f=3.91Hz dB=89.8
+  [73801ms] P=66416.98Pa BL=66371.70Pa T=29.40°C | ΔP=45.289Pa FIR=45.289Pa | f=3.91Hz dB=89.8
+  [74810ms] P=66417.04Pa BL=66371.70Pa T=29.40°C | ΔP=45.344Pa FIR=45.348Pa | f=3.91Hz dB=89.8
+  [75817ms] P=66416.87Pa BL=66371.70Pa T=29.40°C | ΔP=45.172Pa FIR=45.191Pa | f=3.12Hz dB=82.8
+  [76825ms] P=66416.63Pa BL=66371.70Pa T=29.40°C | ΔP=44.938Pa FIR=44.938Pa | f=3.12Hz dB=82.8
+  [77827ms] P=66416.15Pa BL=66371.70Pa T=29.39°C | ΔP=44.453Pa FIR=44.463Pa | f=4.69Hz dB=81.0
+  [78836ms] P=66415.66Pa BL=66371.70Pa T=29.39°C | ΔP=43.969Pa FIR=43.983Pa | f=4.69Hz dB=81.0
+  [79844ms] P=66415.10Pa BL=66371.70Pa T=29.39°C | ΔP=43.406Pa FIR=43.406Pa | f=4.69Hz dB=81.0
+  [80851ms] P=66414.56Pa BL=66371.70Pa T=29.38°C | ΔP=42.867Pa FIR=42.867Pa | f=3.91Hz dB=86.6
+  [81860ms] P=66414.07Pa BL=66371.70Pa T=29.38°C | ΔP=42.375Pa FIR=42.388Pa | f=3.91Hz dB=86.6
+  [82868ms] P=66413.67Pa BL=66371.70Pa T=29.38°C | ΔP=41.977Pa FIR=41.989Pa | f=3.91Hz dB=86.6
+  [83875ms] P=66413.41Pa BL=66371.70Pa T=29.38°C | ΔP=41.719Pa FIR=41.719Pa | f=3.12Hz dB=84.5

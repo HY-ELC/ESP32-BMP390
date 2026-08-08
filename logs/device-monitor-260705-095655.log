@@ -1,0 +1,164 @@
+�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�x�␀�x␀x��x�x�����x␀�␀���x��x�xx�x�␀��xx�x␀�xets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+
+
+╔══════════════════════════════════════════╗
+║   DMP390(BMP390) 次声波检测系统 v3.0   ║
+╠══════════════════════════════════════════╣
+║  MCU:    ESP32 Dev Module               ║
+║  传感器: BMP390 (DMP390兼容)            ║
+║  BMP390: SDA=GPIO21, SCL=GPIO22         ║
+║  OLED:   SDA=GPIO18, SCL=GPIO19         ║
+║  采样率: 200 Hz                          ║
+║  FFT:    1024点, Hamming窗, 5.12s刷新   ║
+║  滤波:   5点MA低通 + 窗内去均值(DC去除) ║
+║  LED:    GPIO2 (板载蓝色LED)             ║
+╚══════════════════════════════════════════╝
+
+[BOOT] ESP32 Chip: ESP32-D0WD-V3
+[BOOT] CPU Freq:   240 MHz
+[BOOT] Flash Size: 4 MB
+[BOOT] Free Heap:  322 KB
+
+═══════════ DMP390 传感器初始化 ═══════════
+[DMP390] ─── BMP390 初始化 (Wire, GPIO21/22) ───
+[DMP390] 尝试地址 0x77... 成功!
+[BMP390] bmp.pressure=83483.41
+[BMP390] 单位=Pa
+[DMP390] 基线校准... 65997.67 Pa
+[INIT] FIR滤波器... OK
+[INIT] FFT处理模块... OK
+[INIT] DAC测试信号... [TONE] PWM测试信号就绪 (GPIO23, 5kHz/8bit)
+[TONE] 命令: t=下一频率, 1~5=指定频率, 0=关, o=开关
+[TONE] 频率: 5/8/10/15/20 Hz, Off
+[TONE] 硬件: GPIO23 → 杜邦线 → 靠近BMP390传感器孔
+OK
+[INIT] OLED显示屏... OK
+
+═══════════ 系统启动完成 ═══════════
+状态: 🟢 正常运行模式
+═══════════ DMP390 实时数据流 ═══════════
+  时间(ms)  |  气压(Pa)  |  温度(°C)  |  压差(Pa)  |  频率(Hz)  |  dB SPL
+----------------------------------------------------------------------------
+  [5508ms] P=66005.34Pa BL=65997.67Pa T=26.81°C | ΔP=7.672Pa FIR=7.672Pa | f=--Hz dB=-- SNR=0.0?
+  [6513ms] P=66011.16Pa BL=65997.67Pa T=26.85°C | ΔP=13.492Pa FIR=13.411Pa | f=--Hz dB=-- SNR=0.0?
+  [7517ms] P=66011.98Pa BL=65997.67Pa T=26.86°C | ΔP=14.305Pa FIR=14.036Pa | f=--Hz dB=-- SNR=0.0?
+  [8522ms] P=66012.96Pa BL=65997.67Pa T=26.86°C | ΔP=15.289Pa FIR=15.289Pa | f=--Hz dB=-- SNR=0.0?
+  [9526ms] P=66013.37Pa BL=65997.67Pa T=26.86°C | ΔP=15.695Pa FIR=15.745Pa | f=--Hz dB=-- SNR=0.0?
+  [10531ms] P=66013.96Pa BL=65997.67Pa T=26.87°C | ΔP=16.289Pa FIR=16.575Pa | f=--Hz dB=-- SNR=0.0?
+  [11535ms] P=66014.71Pa BL=65997.67Pa T=26.87°C | ΔP=17.039Pa FIR=17.039Pa | f=--Hz dB=-- SNR=0.0?
+  [12540ms] P=66014.85Pa BL=65997.67Pa T=26.87°C | ΔP=17.180Pa FIR=17.180Pa | f=--Hz dB=-- SNR=0.0?
+  [13544ms] P=66014.68Pa BL=65997.67Pa T=26.87°C | ΔP=17.008Pa FIR=17.008Pa | f=--Hz dB=-- SNR=0.0?
+  [14549ms] P=66015.91Pa BL=65997.67Pa T=26.88°C | ΔP=18.242Pa FIR=18.098Pa | f=--Hz dB=-- SNR=0.0?
+[DIAG] RMS=4.811Pa dB=107.6 SNR=10.4 rawF=0.20Hz smoothF=0.20Hz
+  [15554ms] P=66015.08Pa BL=65997.67Pa T=26.87°C | ΔP=17.406Pa FIR=17.406Pa | f=0.20Hz dB=107.6 SNR=10.4
+  [16559ms] P=66015.41Pa BL=65997.67Pa T=26.88°C | ΔP=17.734Pa FIR=17.788Pa | f=0.20Hz dB=107.6 SNR=10.4
+  [17564ms] P=66015.75Pa BL=65997.67Pa T=26.88°C | ΔP=18.078Pa FIR=17.952Pa | f=0.20Hz dB=107.6 SNR=10.4
+  [18568ms] P=66016.20Pa BL=65997.67Pa T=26.88°C | ΔP=18.531Pa FIR=18.531Pa | f=0.20Hz dB=107.6 SNR=10.4
+  [19573ms] P=66016.30Pa BL=65997.67Pa T=26.88°C | ΔP=18.633Pa FIR=18.633Pa | f=0.20Hz dB=107.6 SNR=10.4
+  [20577ms] P=66016.79Pa BL=65997.67Pa T=26.88°C | ΔP=19.117Pa FIR=19.070Pa | f=0.20Hz dB=107.6 SNR=10.4
+  [21582ms] P=66016.15Pa BL=65997.67Pa T=26.88°C | ΔP=18.477Pa FIR=18.677Pa | f=0.20Hz dB=107.6 SNR=10.4
+  [22587ms] P=66016.04Pa BL=65997.67Pa T=26.88°C | ΔP=18.367Pa FIR=18.367Pa | f=0.20Hz dB=107.6 SNR=10.4
+  [23591ms] P=66016.41Pa BL=65997.67Pa T=26.88°C | ΔP=18.734Pa FIR=18.745Pa | f=0.20Hz dB=107.6 SNR=10.4
+  [24596ms] P=66016.42Pa BL=65997.67Pa T=26.88°C | ΔP=18.750Pa FIR=18.628Pa | f=0.20Hz dB=107.6 SNR=10.4
+  [25600ms] P=66016.45Pa BL=65997.67Pa T=26.88°C | ΔP=18.773Pa FIR=18.773Pa | f=0.20Hz dB=107.6 SNR=10.4
+  [26604ms] P=66017.12Pa BL=65997.67Pa T=26.88°C | ΔP=19.445Pa FIR=19.445Pa | f=0.20Hz dB=89.4 SNR=3.6
+  [27609ms] P=66016.94Pa BL=65997.67Pa T=26.89°C | ΔP=19.266Pa FIR=19.013Pa | f=0.20Hz dB=89.4 SNR=3.6
+  [28614ms] P=66018.14Pa BL=65997.67Pa T=26.89°C | ΔP=20.469Pa FIR=20.419Pa | f=0.20Hz dB=89.4 SNR=3.6
+  [29618ms] P=66017.48Pa BL=65997.67Pa T=26.89°C | ΔP=19.805Pa FIR=19.805Pa | f=0.20Hz dB=89.4 SNR=3.6
+  [30623ms] P=66017.73Pa BL=66018.03Pa T=26.89°C | ΔP=-0.297Pa FIR=-0.347Pa | f=0.20Hz dB=89.4 SNR=3.6
+  [31627ms] P=66017.52Pa BL=66018.03Pa T=26.89°C | ΔP=-0.516Pa FIR=-0.384Pa | f=0.20Hz dB=89.4 SNR=3.6
+  [32632ms] P=66018.80Pa BL=66018.03Pa T=26.89°C | ΔP=0.766Pa FIR=0.766Pa | f=0.20Hz dB=89.4 SNR=3.6
+  [33637ms] P=66019.24Pa BL=66018.03Pa T=26.90°C | ΔP=1.211Pa FIR=1.211Pa | f=0.20Hz dB=89.4 SNR=3.6
+  [34641ms] P=66019.30Pa BL=66018.03Pa T=26.90°C | ΔP=1.266Pa FIR=1.172Pa | f=0.20Hz dB=89.4 SNR=3.6
+  [35646ms] P=66019.46Pa BL=66018.03Pa T=26.90°C | ΔP=1.430Pa FIR=1.361Pa | f=0.20Hz dB=89.4 SNR=3.6
+  [36650ms] P=66020.01Pa BL=66018.03Pa T=26.90°C | ΔP=1.977Pa FIR=1.977Pa | f=0.20Hz dB=89.4 SNR=3.6
+  [37655ms] P=66020.03Pa BL=66018.03Pa T=26.90°C | ΔP=2.000Pa FIR=2.017Pa | f=0.20Hz dB=113.3 SNR=6.0
+  [38659ms] P=66019.64Pa BL=66018.03Pa T=26.90°C | ΔP=1.609Pa FIR=1.567Pa | f=0.20Hz dB=113.3 SNR=6.0
+  [39664ms] P=66019.56Pa BL=66018.03Pa T=26.90°C | ΔP=1.531Pa FIR=1.531Pa | f=0.20Hz dB=113.3 SNR=6.0
+  [40668ms] P=66020.00Pa BL=66018.03Pa T=26.90°C | ΔP=1.969Pa FIR=1.969Pa | f=0.20Hz dB=113.3 SNR=6.0
+  [41673ms] P=66020.16Pa BL=66018.03Pa T=26.91°C | ΔP=2.125Pa FIR=2.069Pa | f=0.20Hz dB=113.3 SNR=6.0
+  [42677ms] P=66021.26Pa BL=66018.03Pa T=26.91°C | ΔP=3.227Pa FIR=3.183Pa | f=0.20Hz dB=113.3 SNR=6.0
+  [43682ms] P=66022.69Pa BL=66018.03Pa T=26.92°C | ΔP=4.656Pa FIR=4.656Pa | f=0.20Hz dB=113.3 SNR=6.0
+  [44686ms] P=66023.51Pa BL=66018.03Pa T=26.92°C | ΔP=5.477Pa FIR=5.453Pa | f=0.20Hz dB=113.3 SNR=6.0
+  [45691ms] P=66024.22Pa BL=66018.03Pa T=26.93°C | ΔP=6.187Pa FIR=6.145Pa | f=0.20Hz dB=113.3 SNR=6.0
+  [46696ms] P=66025.39Pa BL=66018.03Pa T=26.94°C | ΔP=7.359Pa FIR=7.359Pa | f=0.20Hz dB=113.3 SNR=6.0
+  [47700ms] P=66025.12Pa BL=66018.03Pa T=26.94°C | ΔP=7.086Pa FIR=7.086Pa | f=0.20Hz dB=100.2 SNR=10.9
+  [48705ms] P=66026.24Pa BL=66018.03Pa T=26.95°C | ΔP=8.211Pa FIR=8.242Pa | f=0.20Hz dB=100.2 SNR=10.9
+  [49709ms] P=66027.34Pa BL=66018.03Pa T=26.95°C | ΔP=9.313Pa FIR=9.175Pa | f=0.20Hz dB=100.2 SNR=10.9
+  [50714ms] P=66027.07Pa BL=66018.03Pa T=26.95°C | ΔP=9.039Pa FIR=9.039Pa | f=0.20Hz dB=100.2 SNR=10.9
+  [51718ms] P=66026.18Pa BL=66018.03Pa T=26.94°C | ΔP=8.148Pa FIR=8.225Pa | f=0.20Hz dB=100.2 SNR=10.9
+  [52723ms] P=66025.81Pa BL=66018.03Pa T=26.94°C | ΔP=7.781Pa FIR=7.594Pa | f=0.20Hz dB=100.2 SNR=10.9
+  [53728ms] P=66024.80Pa BL=66018.03Pa T=26.93°C | ΔP=6.766Pa FIR=6.766Pa | f=0.20Hz dB=100.2 SNR=10.9
+  [54732ms] P=66023.81Pa BL=66018.03Pa T=26.93°C | ΔP=5.781Pa FIR=5.781Pa | f=0.20Hz dB=100.2 SNR=10.9
+  [55737ms] P=66024.44Pa BL=66018.03Pa T=26.93°C | ΔP=6.406Pa FIR=6.353Pa | f=0.20Hz dB=100.2 SNR=10.9
+  [56741ms] P=66023.08Pa BL=66018.03Pa T=26.92°C | ΔP=5.047Pa FIR=4.991Pa | f=0.20Hz dB=100.2 SNR=10.9
+  [57746ms] P=66022.34Pa BL=66018.03Pa T=26.92°C | ΔP=4.305Pa FIR=4.305Pa | f=0.20Hz dB=100.2 SNR=10.9
+  [58750ms] P=66022.48Pa BL=66018.03Pa T=26.92°C | ΔP=4.445Pa FIR=4.437Pa | f=0.20Hz dB=97.9 SNR=10.0
+  [59755ms] P=66022.48Pa BL=66018.03Pa T=26.92°C | ΔP=4.453Pa FIR=4.233Pa | f=0.20Hz dB=97.9 SNR=10.0
+  [60759ms] P=66022.12Pa BL=66022.13Pa T=26.92°C | ΔP=-0.016Pa FIR=-0.016Pa | f=0.20Hz dB=97.9 SNR=10.0
+  [61764ms] P=66021.36Pa BL=66022.13Pa T=26.92°C | ΔP=-0.773Pa FIR=-0.773Pa | f=0.20Hz dB=97.9 SNR=10.0
+  [62769ms] P=66020.97Pa BL=66022.13Pa T=26.91°C | ΔP=-1.164Pa FIR=-1.177Pa | f=0.20Hz dB=97.9 SNR=10.0
+  [63773ms] P=66020.63Pa BL=66022.13Pa T=26.91°C | ΔP=-1.508Pa FIR=-1.377Pa | f=0.20Hz dB=97.9 SNR=10.0
